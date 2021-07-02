@@ -18,7 +18,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.persistence.criteria.Order;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -38,6 +38,7 @@ public class User {
 	private String lastname;
 	@NotNull
 	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&â€™*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9.-]+$", message = "Invalid email pattern")
+	@Column(unique = true)
 	private String email;
 	@NotNull
 	@Size(min = 8, message = "Password must be at least 8 characters long")
@@ -56,18 +57,12 @@ public class User {
 	private List<Order> orders;
     
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "roles_id")
+	@JoinColumn(name = "role_id")
 	private Role role;
 
 
 	//getter and setter
 
-	public List<Order> getOrders() {
-		return orders;
-	}
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 	public Long getId() {
 		return id;
 	}
@@ -127,5 +122,18 @@ public class User {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	public List<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 
 }

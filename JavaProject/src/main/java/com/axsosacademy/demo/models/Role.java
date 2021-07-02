@@ -10,6 +10,7 @@ import javax.persistence.Id;
 //import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 //import javax.persistence.criteria.Order;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -21,14 +22,19 @@ public class Role {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	@NotNull
-	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&â€™*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9.-]+$", message = "Invalid email pattern")
-	private String email;
-	@NotNull
-	@Size(min = 8, message = "Password must be at least 8 characters long")
-	private String password;
+	@NotBlank
+	private String name;
+	
+//	@NotNull
+//	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&â€™*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9.-]+$", message = "Invalid email pattern")
+//	private String email;
+//	@NotNull
+//	@Size(min = 8, message = "Password must be at least 8 characters long")
+//	private String password;
  //relationships
-	  @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+	  @OneToMany(mappedBy="role", fetch = FetchType.LAZY)
 		private List<User> users;
 
 
@@ -43,21 +49,6 @@ public class Role {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public List<User> getUsers() {
 		return users;
