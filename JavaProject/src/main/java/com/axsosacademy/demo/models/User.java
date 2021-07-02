@@ -30,28 +30,45 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
+	
+
 	@Size(min = 1, message = "Frist name must  be present")
 	private String firstname;
-	@NotNull
+
 	@Size(min = 1, message = "Last name must  be present")
 	private String lastname;
-	@NotNull
+	
+
 	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&â€™*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+.[a-zA-Z0-9.-]+$", message = "Invalid email pattern")
 	@Column(unique = true)
 	private String email;
-	@NotNull
+	
+
 	@Size(min = 8, message = "Password must be at least 8 characters long")
 	private String password;
+	
 	@Transient
 	private String passwordConfirmation;
+	
 	@Column(updatable = false)
 	private Date createdAt;
+	
 	private Date updatedAt;
+	
+//	Constructors
 	public User() {
 		this.createdAt = new Date();
 		this.updatedAt = new Date();
 	}
+	
+	public User(String firstname, String lastname, String email, String password, String passwordConfirmation, Role role) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.passwordConfirmation = passwordConfirmation;
+	}
+	
 	 //relationships
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	private List<Order> orders;
@@ -59,6 +76,9 @@ public class User {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id")
 	private Role role;
+	
+	
+
 
 
 	//getter and setter
@@ -112,16 +132,7 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
-
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
-
-	@PreUpdate
-	protected void onUpdate() {
-		this.updatedAt = new Date();
-	}
+	
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -133,6 +144,16 @@ public class User {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
 	}
 
 
