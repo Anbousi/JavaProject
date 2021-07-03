@@ -21,8 +21,8 @@ import com.axsosacademy.demo.validetors.UserValidator;
 @Controller
 public class MainController {
 	
-    private UserService userService;
-    private UserValidator userValidator;
+    private final UserService userService;
+    private final UserValidator userValidator;
     
 
     
