@@ -12,6 +12,7 @@
 <body>
     <h1>Welcome <c:out value="${currentUser.firstname}"></c:out></h1>
     <h2>Email: <c:out value="${currentUser.email}"></c:out></h2>
+    
     <h2>Role: <c:out value="${currentUser.getRole().getName()}"></c:out></h2>
     
     <form id="logoutForm" method="POST" action="/logout">

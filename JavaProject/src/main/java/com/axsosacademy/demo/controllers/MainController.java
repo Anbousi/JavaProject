@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsosacademy.demo.models.User;
@@ -46,10 +47,10 @@ public class MainController {
         return "redirect:/login";
     }
     
-//    @RequestMapping("/")
-//    public String viewPage() {
-//        return "viewPage.jsp";
-//    }  
+    @RequestMapping("/")
+    public String viewPage() {
+        return "viewPage.jsp";
+    }  
     
     
     @RequestMapping("/login")
@@ -63,12 +64,19 @@ public class MainController {
         return "loginPage.jsp";
     }
     
-    @RequestMapping(value = {"/", "/home"})
+    @RequestMapping(value = { "/home"})
     public String home(Principal principal, Model model) {
         String username = principal.getName();
 //        System.out.println(username);
         model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
+    
+    
+    @RequestMapping(value="/admin", method=RequestMethod.GET)    
+    public String admin() {    
+            
+        return "adminPage.jsp";    
+    }  
 
 }
