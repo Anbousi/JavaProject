@@ -2,9 +2,12 @@ package com.axsosacademy.demo.services;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.models.Role;
 import com.axsosacademy.demo.models.User;
 import com.axsosacademy.demo.repositories.RoleRepository;
@@ -53,7 +56,15 @@ public class UserService {
     public User findByUsername(String email) {
         return userRepository.findByEmail(email);
     }
+
     public List<User> getAll(){
     	return (List<User>) userRepository.findAll();
     }
+
+    
+//    sddsdfgfdgdfdfdfd
+
+
+
+
 }

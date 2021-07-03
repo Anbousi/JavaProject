@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ page isErrorPage="true" %> 
     <!DOCTYPE html>
     <html lang="en">
     
@@ -11,7 +14,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
     
-        <title>Admin Page</title>
+        <title>Add Painting</title>
     
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,14 +45,6 @@
     
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
-    
-                <!-- Nav Item - Dashboard -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" href="/admin">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        
-                        <span class="active">Admin Page</span></a>
-                </li> -->
         
                 <!-- Divider -->
                 <hr class="sidebar-divider">
@@ -63,8 +58,8 @@
                     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item active" href="/admin">Admin Page</a>
-                            <a class="collapse-item" href="/admin/add_painting">Add Painting</a>
+                            <a class="collapse-item" href="/admin">Admin Page</a>
+                            <a class="collapse-item active" href="/admin/add_painting">Add Painting</a>
                             <a class="collapse-item" href="/admin/add_category">Add Category</a>
                             <a class="collapse-item" href="/admin/users">Users</a>
                             <a class="collapse-item" href="/admin/paintings">Paintings</a>
@@ -73,24 +68,8 @@
                         </div>
                     </div>
                 </li>
-    
-                <!-- Nav Item - Charts -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
-                </li> -->
-
-    
-                <!-- Divider -->
-                <!-- <hr class="sidebar-divider d-none d-md-block"> -->
-    
-                <!-- Sidebar Toggler (Sidebar) -->
-                <!-- <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div> -->
             </ul>
-            <!-- End of Sidebar -->
+            
     
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
@@ -147,8 +126,62 @@
                     <div class="container-fluid">
     
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-4 text-gray-800">Hello Admin</h1>
-                        <p>In this page, you can add categories and paintings, see all users, categories , paintings ,and modify them.</p>
+                        <h1 class="h3 mb-4 text-gray-800">Add a New Painting</h1>
+                        
+                        <form:form action="/admin/add_painting" method="post" modelAttribute="painting">
+                            <table>
+                                <tr>
+                                    <td><form:label path="pic">Picture URL</form:label></td>
+                                    <td> 
+                                        <form:input path="pic"/>
+                                        <form:errors path="pic"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="title">Title</form:label></td>
+                                    <td> 
+                                        <form:input path="title"/>
+                                        <form:errors path="title"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="descreption">Rescreption</form:label></td>
+                                    <td> 
+                                        <form:textarea path="descreption"/>
+                                        <form:errors path="descreption"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="price">Price</form:label></td>
+                                    <td> 
+                                        <form:input type="number" path="price"/>
+                                        <form:errors path="price"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="artistname">Artist Name</form:label></td>
+                                    <td> 
+                                        <form:input path="artistname"/>
+                                        <form:errors path="artistname"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="categoryname">category</form:label></td>
+                                    <td>
+                                        <form:select path="categoryname">
+                                            <option value="" hidden></option>
+                                            <option value="test">test</option>
+                                            <c:forEach var="category" items="${categories}">
+                                                <option value="category.id">${category.name}</option>
+                                            </c:forEach>
+                                        </form:select>
+                                        <form:errors path="categoryname"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                        <button type="submit">Add Painting</button>
+                        </form:form>
     
                     </div>
                     <!-- /.container-fluid -->

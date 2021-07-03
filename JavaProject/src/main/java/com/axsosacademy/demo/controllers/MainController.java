@@ -21,8 +21,8 @@ import com.axsosacademy.demo.validetors.UserValidator;
 @Controller
 public class MainController {
 	
-    private UserService userService;
-    private UserValidator userValidator;
+    private final UserService userService;
+    private final UserValidator userValidator;
     
 
     
@@ -66,9 +66,9 @@ public class MainController {
     
     @RequestMapping(value = { "/home"})
     public String home(Principal principal, Model model) {
-        String username = principal.getName();
+//        String username = principal.getName();
 //        System.out.println(username);
-        model.addAttribute("currentUser", userService.findByUsername(username));
+//        model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
     
