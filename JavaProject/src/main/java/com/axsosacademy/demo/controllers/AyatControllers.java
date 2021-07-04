@@ -1,8 +1,5 @@
 package com.axsosacademy.demo.controllers;
 
-import java.security.Principal;
-
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -11,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsosacademy.demo.models.User;
@@ -19,14 +15,14 @@ import com.axsosacademy.demo.services.UserService;
 import com.axsosacademy.demo.validetors.UserValidator;
 
 @Controller
-public class MainController {
+public class AyatControllers {
 	
     private UserService userService;
     private UserValidator userValidator;
     
 
     
-    public MainController(UserService userService, UserValidator userValidator) {
+    public AyatControllers(UserService userService, UserValidator userValidator) {
 		this.userService = userService;
 		this.userValidator = userValidator;
 	}

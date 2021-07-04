@@ -31,44 +31,44 @@ public class MainController {
 		this.userValidator = userValidator;
 	}
 
-	@RequestMapping("/registration")
-    public String registerForm(@Valid @ModelAttribute("user") User user) {
-        return "registrationPage.jsp";
-    }
+//	@RequestMapping("/registration")
+//    public String registerForm(@Valid @ModelAttribute("user") User user) {
+//        return "registrationPage.jsp";
+//    }
+//    
+//    @PostMapping("/registration")
+//    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+//        userValidator.validate(user, result);
+//        if (result.hasErrors()) {
+//            return "registrationPage.jsp";
+//        }
+//        
+//        userService.saveWithUserRole(user);
+//        return "redirect:/login";
+//    }
     
-    @PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
-        userValidator.validate(user, result);
-        if (result.hasErrors()) {
-            return "registrationPage.jsp";
-        }
-        
-        userService.saveWithUserRole(user);
-        return "redirect:/login";
-    }
-    
-    @RequestMapping("/")
-    public String viewPage() {
-        return "viewPage.jsp";
-    }  
+//    @RequestMapping("/")
+//    public String viewPage() {
+//        return "viewPage.jsp";
+//    }  
     
     
-    @RequestMapping("/login")
-    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
-        if(error != null) {
-            model.addAttribute("errorMessage", "Email or Password is incorrect, Please try again.");
-        }
-        if(logout != null) {
-            model.addAttribute("logoutMessage", "Logout Successful!");
-        }
-        return "loginPage.jsp";
-    }
+//    @RequestMapping("/login")
+//    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
+//        if(error != null) {
+//            model.addAttribute("errorMessage", "Email or Password is incorrect, Please try again.");
+//        }
+//        if(logout != null) {
+//            model.addAttribute("logoutMessage", "Logout Successful!");
+//        }
+//        return "loginPage.jsp";
+//    }
     
     @RequestMapping(value = { "/home"})
     public String home(Principal principal, Model model) {
-//        String username = principal.getName();
+        String username = principal.getName();
 //        System.out.println(username);
-//        model.addAttribute("currentUser", userService.findByUsername(username));
+        model.addAttribute("currentUser", userService.findByUsername(username));
         return "homePage.jsp";
     }
     

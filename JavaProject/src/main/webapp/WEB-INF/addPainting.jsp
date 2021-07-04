@@ -36,7 +36,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -62,7 +62,8 @@
                             <a class="collapse-item active" href="/admin/add_painting">Add Painting</a>
                             <a class="collapse-item" href="/admin/add_category">Add Category</a>
                             <a class="collapse-item" href="/admin/users">Users</a>
-                            <a class="collapse-item" href="/admin/paintings">Paintings</a>
+                            <a class="collapse-item" href="/admin/show_paintings">Paintings</a>
+                            <a class="collapse-item" href="/admin/show_categories">Categories</a>
                             <div class="collapse-divider"></div>
                             <a class="collapse-item" href="/admin/add_admin">Add Admin</a>
                         </div>
@@ -170,7 +171,6 @@
                                     <td>
                                         <form:select path="categoryname">
                                             <option value="" hidden></option>
-                                            <option value="test">test</option>
                                             <c:forEach var="category" items="${categories}">
                                                 <option value="category.id">${category.name}</option>
                                             </c:forEach>
@@ -224,7 +224,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="/logout">Logout</a>
                     </div>
                 </div>
             </div>

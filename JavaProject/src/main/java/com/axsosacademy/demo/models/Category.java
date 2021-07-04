@@ -32,6 +32,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
+	@Column(unique = true)
 	private String name;
 	@Column(updatable = false)
 	private Date createdAt;

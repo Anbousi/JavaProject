@@ -1,5 +1,6 @@
 package com.axsosacademy.demo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -60,6 +61,23 @@ public class UserService {
     public List<User> getAll(){
     	return (List<User>) userRepository.findAll();
     }
+
+	public void deleteUser(long id) {
+		userRepository.deleteById(id);	
+	}
+
+	public void addAdmin(long id) {
+		User user = userRepository.findById(id).orElse(null);
+		Role r = findRoleById( (long) 2);
+        user.setRole(r);
+		userRepository.save(user);
+	}
+
+	public List<User> getNonAdmin() {
+		List<User> nonAdmin = userRepository.findNonAdmin();
+		return nonAdmin;
+	}
+
 
     
 //    sddsdfgfdgdfdfdfd

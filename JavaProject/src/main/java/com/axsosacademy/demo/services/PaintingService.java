@@ -1,5 +1,7 @@
 package com.axsosacademy.demo.services;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
@@ -21,6 +23,17 @@ public PaintingService(PaintingRepository paintingRepository) {
 	//	Add a New Painting
 	public Painting addPainting(Painting painting) {
 		return paintingRepository.save(painting);
+	}
+
+// Get All Paintings
+	public List<Painting> getAllPaintings() {
+		// TODO Auto-generated method stub
+		return paintingRepository.findAll();
+	}
+
+
+	public void deletePaintning(long id) {
+		paintingRepository.deleteById(id);		
 	}
 
 }
