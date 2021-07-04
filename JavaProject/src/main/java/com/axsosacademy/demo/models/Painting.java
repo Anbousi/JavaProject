@@ -14,8 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "paintings")
@@ -24,23 +26,25 @@ public class Painting {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
+
 	@NotBlank
 	private String pic;
-	@NotNull
+
+	@Size(min = 1, message = "Title must  be present")
 	private String title;
-	@NotNull
-	@NotBlank
+	
+	@Size(min = 1, message = "Description must  be present")
 	private String descreption;
-	@NotNull
-	@NotBlank
+	
+	@Min(1)
 	private Double price;
-	@NotNull
-	@NotBlank
+	
+	@Size(min = 1, message = "Artist name must  be present")
 	private String artistname;
-	@NotNull
-	@NotBlank
+	
+	@Size(min = 1, message = "Category must  be present")
 	private String categoryname;
+	
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -49,7 +53,20 @@ public class Painting {
 		this.createdAt = new Date();
 		this.updatedAt = new Date();
 	}
+	
+	
 	// relationships
+
+	public Painting(String pic,String title, String descreption,
+			Double price,String artistname, Category category) {
+		this.pic = pic;
+		this.title = title;
+		this.descreption = descreption;
+		this.price = price;
+		this.artistname = artistname;
+		this.category = category;
+	}
+
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id")

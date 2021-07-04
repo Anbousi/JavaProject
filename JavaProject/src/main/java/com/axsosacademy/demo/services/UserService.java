@@ -1,10 +1,14 @@
 package com.axsosacademy.demo.services;
 
+import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.models.Role;
 import com.axsosacademy.demo.models.User;
 import com.axsosacademy.demo.repositories.RoleRepository;
@@ -53,5 +57,32 @@ public class UserService {
     public User findByUsername(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public List<User> getAll(){
+    	return (List<User>) userRepository.findAll();
+    }
+
+	public void deleteUser(long id) {
+		userRepository.deleteById(id);	
+	}
+
+	public void addAdmin(long id) {
+		User user = userRepository.findById(id).orElse(null);
+		Role r = findRoleById( (long) 2);
+        user.setRole(r);
+		userRepository.save(user);
+	}
+
+	public List<User> getNonAdmin() {
+		List<User> nonAdmin = userRepository.findNonAdmin();
+		return nonAdmin;
+	}
+
+
+    
+//    sddsdfgfdgdfdfdfd
+
+
+
 
 }

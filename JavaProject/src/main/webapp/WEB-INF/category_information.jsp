@@ -129,7 +129,11 @@
 				<div class="widget-area">
 					<aside class="widget">
 						<h4 class="widget-title">Request similar project</h4>
+<<<<<<< HEAD
 						<form class="wpcf7" method="post" action="#" id="contactform">
+=======
+						<form class="wpcf7" method="post" action="contact.php" id="contactform">
+>>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 							<div class="form">
 								<p><input type="text" name="name" placeholder="Name *"></p>
 								<p><input type="text" name="email" placeholder="E-mail Address *"></p>
@@ -160,12 +164,18 @@ data-action-triggers="click"
 data-action-method="jsonp" 
 data-action-endpoint="api/public/1.0/atc" 
 data-action-components='{"product_id": "0a0da48b-4727-47ce-b927-1806327f1719", "channel": "c264b0cb-e130-4907-86a8-eb4d6f113b7f", "quantity": {"type": "selector", "value": ".qty"}, "commit": 1}'
+<<<<<<< HEAD
 data-action-on-processed='[{"type": "prependHTML", "target": ".container-fluid", "html": "<div class=\"alert alert-success\" role=\"alert\">Painting has been added to cart!</div>"}]'
 data-loading-text="Processing...">Add to cart</button>
 <br><br>
 <a  href="category/details/cart" >View Chart </a>
 </div>
 
+=======
+data-action-on-processed='[{"type": "prependHTML", "target": ".container-fluid", "html": "<div class=\"alert alert-success\" role=\"alert\">Product has been added to cart!</div>"}]'
+data-loading-text="Processing...">Add to cart</button>
+</div>
+>>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 </div>
 </div>
 		  </div>
@@ -204,7 +214,10 @@ m=s.getElementsByTagName(o)[0];a.src=g;m.parentNode.insertBefore(a,m)
 
 })(window,document,'script','https://salescloud.is/js/salescloud.js','salescloud');
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 </body>
 </body>
 </html>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ page isErrorPage="true" %> 
     <!DOCTYPE html>
     <html lang="en">
     
@@ -11,14 +14,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
     
-        <title>Admin Page</title>
+        <title>Add Painting</title>
     
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
         <!-- Custom styles for this template-->
         <link href="/css/admin.css" rel="stylesheet">
     
@@ -42,14 +45,6 @@
     
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
-    
-                <!-- Nav Item - Dashboard -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" href="/admin">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        
-                        <span class="active">Admin Page</span></a>
-                </li> -->
         
                 <!-- Divider -->
                 <hr class="sidebar-divider">
@@ -63,20 +58,19 @@
                     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item active" href="/admin">Admin Page</a>
+                            <a class="collapse-item" href="/admin">Admin Page</a>
                             <a class="collapse-item" href="/admin/add_painting">Add Painting</a>
                             <a class="collapse-item" href="/admin/add_category">Add Category</a>
                             <a class="collapse-item" href="/admin/users">Users</a>
                             <a class="collapse-item" href="/admin/show_paintings">Paintings</a>
-                            <a class="collapse-item" href="/admin/show_categories">Categories</a>
+                            <a class="collapse-item active" href="/admin/show_categories">Categories</a>
                             <div class="collapse-divider"></div>
                             <a class="collapse-item" href="/admin/add_admin">Add Admin</a>
                         </div>
                     </div>
                 </li>
-    
             </ul>
-            <!-- End of Sidebar -->
+            
     
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
@@ -138,8 +132,26 @@
                     <div class="container-fluid">
     
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-4 text-gray-800">Hello Admin</h1>
-                        <p>In this page, you can add categories and paintings, see all users, categories , paintings ,and modify them.</p>
+                        <h1 class="h3 mb-4 text-gray-800">All Categories</h1>
+                        
+                        
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>Category</th>
+                                    <th>Action</th>
+                                </thead>
+
+                                <tbody>
+
+                                    <c:forEach var="category" items="${categories}">
+                                        <tr>
+                                            <td><a href="/admin/paintings/${category.id}">${category.name}</a></td>
+                                            <td><a href="/admin/categories/${category.id}/delete/"><button class="btn btn-danger">Delete</button></a></td>				
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        
     
                     </div>
                     <!-- /.container-fluid -->
@@ -182,7 +194,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="/logout">Logout</a>
                     </div>
                 </div>
             </div>

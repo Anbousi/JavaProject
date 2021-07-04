@@ -10,4 +10,5 @@ import com.axsosacademy.demo.models.Painting;
 
 @Repository
 public interface PaintingRepository extends CrudRepository<Painting, Long> {
+	List<Painting> findAll();
 }
