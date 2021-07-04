@@ -136,7 +136,6 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
 
 
     
-<<<<<<< HEAD
 //	 @RequestMapping("/category/{id}/details")
 //	    public String index(Model model , Long id) {
 //	        List<Painting> panting =  paintingService.findPaintingById(id);
@@ -148,7 +147,7 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
 	 public String showitemis() {
 		 return "category_information.jsp";
 	 }
-=======
+
 
 	
 //	Show All Users ------------------------------------------------------------------------------------
@@ -179,7 +178,6 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
         return "redirect:/admin";
     }
     
->>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 
 }
 

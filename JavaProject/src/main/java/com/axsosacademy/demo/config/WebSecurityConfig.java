@@ -32,13 +32,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http.
 	            authorizeRequests()
-<<<<<<< HEAD
+
 	                .antMatchers("/css/**", "/js/**", "/registration","/category*/painting*","/","/images/**").permitAll()
-=======
+
 
 	                .antMatchers("/css/**", "/js/**","/static/**", "/registration","/category*" ,"/category*/painting*","/").permitAll()
 
->>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 	                .antMatchers("/admin/**").hasRole("ADMIN")
 	                .antMatchers("/cart/**").hasRole("USER")
 

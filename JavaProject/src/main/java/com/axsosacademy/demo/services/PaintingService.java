@@ -1,14 +1,11 @@
 package com.axsosacademy.demo.services;
 
-<<<<<<< HEAD
 import java.util.Optional;
-=======
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
->>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 
 import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.repositories.PaintingRepository;
@@ -40,7 +37,6 @@ public PaintingService(PaintingRepository paintingRepository) {
 	public void deletePaintning(long id) {
 		paintingRepository.deleteById(id);		
 	}
->>>>>>> a39e5669746742615b9444946ce07341fc354fcf
 
 public Painting findPaintingById(Long id) {
 	Optional<Painting> optionalPainting = paintingRepository.findById(id);
