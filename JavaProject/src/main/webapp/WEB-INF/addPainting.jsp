@@ -117,7 +117,12 @@
                             </li>
     
                             <!-- Nav Item - Alerts -->
-                            <li><a href="/logout">Logout</a></li>
+                            <li>
+                                <form id="logoutForm" method="POST" action="/logout">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    <input type="submit" class="btn btn-danger" value="Logout!" />
+                                </form>
+                            </li>
                         </ul>
     
                     </nav>
@@ -130,7 +135,7 @@
                         <h1 class="h3 mb-4 text-gray-800">Add a New Painting</h1>
                         
                         <form:form action="/admin/add_painting" method="post" modelAttribute="painting">
-                            <table>
+                            <table class="table table-striped">
                                 <tr>
                                     <td><form:label path="pic">Picture URL</form:label></td>
                                     <td> 
@@ -180,7 +185,7 @@
                                 </tr>
                             </table>
                         
-                        <button type="submit">Add Painting</button>
+                        <button type="submit" class="btn btn-primary">Add Painting</button>
                         </form:form>
     
                     </div>

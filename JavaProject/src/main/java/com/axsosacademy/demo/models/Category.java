@@ -23,6 +23,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 //import javax.validation.constraints.Pattern;
 //import javax.validation.constraints.Size;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "categories")
@@ -31,9 +32,12 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@NotNull
+	@Size(min = 1, message = "Category must be present and more than 1 char")
 	@Column(unique = true)
 	private String name;
+	
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;

@@ -57,12 +57,36 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
     		model.addAttribute("categories" , categories);
             return "addPainting.jsp";
         } 
-        
+        try {
         paintingService.addPainting(painting);
         System.out.println("created");
-        return "/admin/show_paintings";
+        
+        }
+        catch(Exception e) {
+        	List <Category> categories = categoryService.getAllCategories();
+    		model.addAttribute("categories" , categories);
+    		
+            return "addPainting.jsp";
+        }
+        return "redirect:/admin/show_paintings";
+
     }
 //    --------------------------------------------------------------------------------------------------
+//	Show All Paintings ------------------------------------------------------------------------------------
+	@RequestMapping("/admin/show_paintings")
+    public String showPaintingPage(Model model) {
+		List <Painting> paintings = paintingService.getAllPaintings();
+		model.addAttribute("paintings" , paintings);
+        return "show_paintings.jsp";
+    }
+	
+//	Delete a Painting ------------------------------------------------------------------------------------
+	@RequestMapping("/admin/paintings/{id}/delete")
+    public String deletePainting(@PathVariable("id") long id) {
+		paintingService.deletePaintning(id);
+        return "redirect:/admin/show_paintings";
+    }
+//  --------------------------------------------------------------------------------------------------
     
 //	Add Category ------------------------------------------------------------------------------------
 	@RequestMapping("/admin/add_category")
@@ -78,28 +102,18 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
         	System.out.println("error");
             return "addCategory.jsp";
         } 
-        
-        categoryService.addCategory(category);
+        try {
+        	categoryService.addCategory(category);
         System.out.println("created");
-        return "/admin/show_categories";
+        return "redirect:/admin/show_categories";
+        }
+        catch(Exception e){
+        	model.addAttribute("er", "This Category is aleady added!");
+        	return "addCategory.jsp";
+        }
+        
     }
 //  --------------------------------------------------------------------------------------------------
-
-//	Show All Paintings ------------------------------------------------------------------------------------
-	@RequestMapping("/admin/show_paintings")
-    public String showPaintingPage(Model model) {
-		List <Painting> paintings = paintingService.getAllPaintings();
-		model.addAttribute("paintings" , paintings);
-        return "show_paintings.jsp";
-    }
-	
-//	Delete a Painting ------------------------------------------------------------------------------------
-	@RequestMapping("/admin/paintings/{id}/delete")
-    public String deletePainting(@PathVariable("id") long id) {
-		paintingService.deletePaintning(id);
-        return "redirect:/admin/show_paintings";
-    }
-    
 //	Show All Categories ------------------------------------------------------------------------------------
 	@RequestMapping("/admin/show_categories")
     public String showCategoriesPage(Model model) {
@@ -115,6 +129,10 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
 		categoryService.deleteCategory(id);
         return "redirect:/admin/show_categories";
     }
+
+
+    
+
 	
 //	Show All Users ------------------------------------------------------------------------------------
 	@RequestMapping("/admin/users")

@@ -117,7 +117,12 @@
                             </li>
     
                             <!-- Nav Item - Alerts -->
-                            <li><a href="/logout">Logout</a></li>
+                            <li>
+                                <form id="logoutForm" method="POST" action="/logout">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    <input type="submit" class="btn btn-danger" value="Logout!" />
+                                </form>
+                            </li>
                         </ul>
     
                     </nav>
@@ -130,11 +135,11 @@
                         <h1 class="h3 mb-4 text-gray-800">All Paintings</h1>
                         
                         
-                            <table>
+                            <table class="table table-striped">
                                 <thead>
                                     <th>Painting</th>
                                     <th>Artist Name</th>
-                                    <td>Action</td>
+                                    <th>Action</th>
                                 </thead>
 
                                 <tbody>
@@ -143,7 +148,7 @@
                                         <tr>
                                             <td><a href="/admin/paintings/${painting.id}">${painting.title}</a></td>
                                             <td>${painting.artistname}</td>
-                                            <td><a href="/admin/paintings/${painting.id}/delete"><button>Delete</button></a></td>				
+                                            <td><a href="/admin/paintings/${painting.id}/delete"><button class="btn btn-danger">Delete</button></a></td>				
                                         </tr>
                                     </c:forEach>
                                 </tbody>

@@ -117,7 +117,12 @@
                             </li>
     
                             <!-- Nav Item - Alerts -->
-                            <li><a href="/logout">Logout</a></li>
+                            <li>
+                                <form id="logoutForm" method="POST" action="/logout">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    <input type="submit" class="btn btn-danger" value="Logout!" />
+                                </form>
+                            </li>
                         </ul>
     
                     </nav>
@@ -130,18 +135,20 @@
                         <h1 class="h3 mb-4 text-gray-800">Add a New Category</h1>
                         
                         <form:form action="/admin/add_category" method="post" modelAttribute="category">
-                            <table>
+                            <table class="table table-striped">
                                 <tr>
                                     <td><form:label path="name">Category Name</form:label></td>
                                     <td> 
                                         <form:input path="name"/>
                                         <form:errors path="name"/>
+                                        <c:out value="${er}"/>
                                     </td>
                                 </tr>
                             </table>
                         
-                        <button type="submit">Add Category</button>
+                        <button type="submit" class="btn btn-primary">Add Category</button>
                         </form:form>
+                        
     
                     </div>
                     <!-- /.container-fluid -->

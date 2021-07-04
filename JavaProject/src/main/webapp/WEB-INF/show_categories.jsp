@@ -117,7 +117,12 @@
                             </li>
     
                             <!-- Nav Item - Alerts -->
-                            <li><a href="/logout">Logout</a></li>
+                            <li>
+                                <form id="logoutForm" method="POST" action="/logout">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                    <input type="submit" class="btn btn-danger" value="Logout!" />
+                                </form>
+                            </li>
                         </ul>
     
                     </nav>
@@ -130,10 +135,10 @@
                         <h1 class="h3 mb-4 text-gray-800">All Categories</h1>
                         
                         
-                            <table>
+                            <table class="table table-striped">
                                 <thead>
                                     <th>Category</th>
-                                    <td>Action</td>
+                                    <th>Action</th>
                                 </thead>
 
                                 <tbody>
@@ -141,7 +146,7 @@
                                     <c:forEach var="category" items="${categories}">
                                         <tr>
                                             <td><a href="/admin/paintings/${category.id}">${category.name}</a></td>
-                                            <td><a href="/admin/categories/${category.id}/delete/"><button>Delete</button></a></td>				
+                                            <td><a href="/admin/categories/${category.id}/delete/"><button class="btn btn-danger">Delete</button></a></td>				
                                         </tr>
                                     </c:forEach>
                                 </tbody>
