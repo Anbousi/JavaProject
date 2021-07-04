@@ -65,6 +65,7 @@ public class MainController {
 		session.invalidate();
 		return "redirect:/";
 	}
+    
 
 }
 
