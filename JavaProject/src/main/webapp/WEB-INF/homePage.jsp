@@ -1,364 +1,146 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ page isErrorPage="true" %> 
 <!DOCTYPE html>
-<!--
-Template Name: Oleald
-Author: <a href="https://www.os-templates.com/">OS Templates</a>
-Author URI: https://www.os-templates.com/
-Licence: Free to use under our free template licence terms
-Licence URI: https://www.os-templates.com/template-terms
--->
-<html lang="">
-<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<html>
 <head>
-<title>Oleald</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="/css/layout.css" rel="stylesheet" type="text/css" media="all">
-<!-- CSS only -->
-
-
+<meta charset="ISO-8859-1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel='stylesheet' href='/css/homePage.css' type='text/css' media='all'/>
+<style>
+    .cat{
+	min-height: 400px;
+}
+.bg-img{
+    background-image: url("/images/demo/homePage.jpg");
+    min-height: 650px;
+    margin-bottom: 30px;
+}
+</style>
+<title>Welcome | Artisto</title>
 </head>
-<body id="top">
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- Top Background Image Wrapper -->
-<div class="bgded overlay light" style="background-image:url('images/demo/backgrounds/01.png');"> 
-  <!-- ################################################################################################ -->
-  <div class="wrapper row0">
-    <div id="topbar" class="hoc clear"> 
-      <!-- ################################################################################################ -->
-
-
-  </div>
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <div class="wrapper row1">
-    <header id="header" class="hoc clear"> 
-      <!-- ################################################################################################ -->
-      <div id="logo" class="fl_left">
-        <h1><a href="index.html">Oleald</a></h1>
-      </div>
-      <nav id="mainav" class="fl_right">
-        <ul class="clear">
-          <li class="active"><a href="index.html">Home</a></li>
-          <li><a class="drop" href="#">Pages</a>
-            <ul>
-              <li><a href="pages/gallery.html">Gallery</a></li>
-              <li><a href="pages/full-width.html">Full Width</a></li>
-              <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
-              <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
-              <li><a href="pages/basic-grid.html">Basic Grid</a></li>
-            </ul>
-          </li>
-          <li><a class="drop" href="#">Dropdown</a>
-            <ul>
-              <li><a href="#">Level 2</a></li>
-              <li><a class="drop" href="#">Level 2 + Drop</a>
-                <ul>
-                  <li><a href="#">Level 3</a></li>
-                  <li><a href="#">Level 3</a></li>
-                  <li><a href="#">Level 3</a></li>
+<body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark navbar-collapse">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Artisto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <c:forEach items="${categories}" var="category">
+                        <li><a class="dropdown-item" href="${category.id}">${category.name}</a></li>
+                    </c:forEach>
                 </ul>
-              </li>
-              <li><a href="#">Level 2</a></li>
+                </li>
             </ul>
-          </li>
-          <li><a href="#">Link Text</a></li>
-          <li><a href="#">Link Text</a></li>
-        </ul>
-      </nav>
-      <!-- ################################################################################################ -->
-    </header>
-  </div>
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <!-- ################################################################################################ -->
-  <div id="pageintro" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <article>
-      <h3 class="heading">Sollicitudin<br>
-        ligula cras lobortis tortor</h3>
-      <p>Et lorem pulvinar consectetur suspendisse nec imperdiet mi sed ac porttitor nisl nam viverra diam at lectus malesuada mattis morbi quis.</p>
-      <footer><a class="btn" href="#">Bibendum tellus nullam</a></footer>
-    </article>
-    <!-- ################################################################################################ -->
-  </div>
-  <!-- ################################################################################################ -->
-</div>
-<!-- End Top Background Image Wrapper -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row3">
-  <main class="hoc container clear"> 
-    <!-- main body -->
-    <!-- ################################################################################################ -->
-    <div class="group excerpt">
-      <article class="one_third first"><a class="imgover btmspace-30" href="#"><img src="images/demo/320x240.png" alt=""></a>
-        <h6 class="heading">Sapien lorem interdum</h6>
-        <p>Purus in ornare feugiat ex vivamus bibendum augue nisl sit amet dictum quam aliquet id phasellus interdum leo sit amet&hellip;</p>
-        <footer><a href="#">Service Details &raquo;</a></footer>
-      </article>
-      <article class="one_third"><a class="imgover btmspace-30" href="#"><img src="images/demo/320x240.png" alt=""></a>
-        <h6 class="heading">Convallis vulputate mi</h6>
-        <p>Sem vestibulum lacus sit amet eleifend velit tellus quis ligula nam egestas eros sit amet vulputate porttitor proin leo&hellip;</p>
-        <footer><a href="#">Service Details &raquo;</a></footer>
-      </article>
-      <article class="one_third"><a class="imgover btmspace-30" href="#"><img src="images/demo/320x240.png" alt=""></a>
-        <h6 class="heading">Turpis suscipit vitae magna</h6>
-        <p>At pretium tempus erat ut vel hendrerit velit aliquam feugiat eget velit eu ultrices vivamus mauris leo aenean sagittis&hellip;</p>
-        <footer><a href="#">Service Details &raquo;</a></footer>
-      </article>
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- / main body -->
-    <div class="clear"></div>
-  </main>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row2 bgded overlay" style="background-image:url('images/demo/backgrounds/02.png');">
-  <section class="hoc container clear"> 
-    <!-- ################################################################################################ -->
-    <div class="sectiontitle">
-      <h6 class="heading">Porta consequat cras imperdiet</h6>
-      <p>Lobortis erat at sodales libero malesuada vel curabitur maximus</p>
-    </div>
-    <ul class="nospace group overview">
-      <li class="one_third">
-        <article><a href="#"><i class="fa fa-headphones"></i></a>
-          <h6 class="heading"><a href="#">Arcu eleifend venenatis</a></h6>
-          <p>Sed non vulputate arcu nullam eu massa vitae urna vulputate efficitur in et&hellip;</p>
-          <footer><a href="#">View Details &raquo;</a></footer>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><i class="fa fa-asl-interpreting"></i></a>
-          <h6 class="heading"><a href="#">Metus porta tincidunt</a></h6>
-          <p>Mauris eu tristique aenean dapibus facilisis risus sed vestibulum sed vitae&hellip;</p>
-          <footer><a href="#">View Details &raquo;</a></footer>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><i class="fa fa-area-chart"></i></a>
-          <h6 class="heading"><a href="#">Lacus pulvinar euismod</a></h6>
-          <p>Pulvinar nulla elementum massa ut fermentum accumsan nulla luctus at risus&hellip;</p>
-          <footer><a href="#">View Details &raquo;</a></footer>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><i class="fa fa-balance-scale"></i></a>
-          <h6 class="heading"><a href="#">Efficitur aliquet morbi</a></h6>
-          <p>Vitae est eu felis ultrices tristique morbi eget libero ultricies semper enim&hellip;</p>
-          <footer><a href="#">View Details &raquo;</a></footer>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><i class="fa fa-comments-o"></i></a>
-          <h6 class="heading"><a href="#">Eget tempor interdum</a></h6>
-          <p>Et malesuada fames ac ante ipsum primis in faucibus duis volutpat gravida nisi&hellip;</p>
-          <footer><a href="#">View Details &raquo;</a></footer>
-        </article>
-      </li>
-      <li class="one_third">
-        <article><a href="#"><i class="fa fa-gears"></i></a>
-          <h6 class="heading"><a href="#">Cursus egestas curabitur</a></h6>
-          <p>Aliquam lorem lorem ac iaculis eros pulvinar nec vivamus vestibulum nisl sem&hellip;</p>
-          <footer><a href="#">View Details &raquo;</a></footer>
-        </article>
-      </li>
-    </ul>
-    <footer class="center"><a class="btn" href="#">Quis vehicula nulla</a></footer>
-    <!-- ################################################################################################ -->
-  </section>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row3">
-  <figure class="hoc container clear"> 
-    <!-- ################################################################################################ -->
-    <figcaption class="sectiontitle">
-      <h6 class="heading">Semper sed vestibulum faucibus</h6>
-      <p>Mauris non hendrerit tempus donec nec facilisis velit bibendum</p>
-    </figcaption>
-    <ul class="nospace group center overview">
-      <li class="one_third"><a class="imgover" href="#"><img src="images/demo/320x418.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/demo/320x418.png" alt=""></a></li>
-      <li class="one_third"><a class="imgover" href="#"><img src="images/demo/320x418.png" alt=""></a></li>
-    </ul>
-    <footer class="center"><a class="btn" href="#">Elit vitae convallis</a></footer>
-    <!-- ################################################################################################ -->
-  </figure>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row2 bgded overlay" style="background-image:url('images/demo/backgrounds/03.png');">
-  <section class="hoc container clear testimonials"> 
-    <!-- ################################################################################################ -->
-    <div class="sectiontitle">
-      <h6 class="heading">Hendrerit ut et tortor sed ante</h6>
-      <p>Vehicula convallis eget sed ex nullam eget faucibus ligula</p>
-    </div>
-    <ul class="nospace group btmspace-80">
-      <li class="one_half first">
-        <blockquote>Suspendisse ut congue nisi eget consectetur eros donec vitae dolor nec ipsum malesuada auctor vitae euismod lacus praesent est a imperdiet feugiat sapien ipsum porta quam venenatis sodales felis</blockquote>
-        <figure class="clear"><img src="images/demo/60x60.png" alt="">
-          <figcaption>
-            <h6 class="heading">John Doe</h6>
-            <em>CEO</em></figcaption>
-        </figure>
-      </li>
-      <li class="one_half">
-        <blockquote>Lacus eu turpis ut consequat ex id interdum morbi placerat commodo felis nec tempus vivamus cursus purus vel commodo venenatis in faucibus nunc quis pulvinar aliquam eu elit vestibulum lobortis mi</blockquote>
-        <figure class="clear"><img src="images/demo/60x60.png" alt="">
-          <figcaption>
-            <h6 class="heading">Jane Doe</h6>
-            <em>Sales Director</em></figcaption>
-        </figure>
-      </li>
-    </ul>
-    <footer class="center"><a class="btn" href="#">View More &raquo;</a></footer>
-    <!-- ################################################################################################ -->
-  </section>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper">
-  <section class="hoc container clear"> 
-    <!-- ################################################################################################ -->
-    <div class="sectiontitle">
-      <h6 class="heading">Non fringilla felis nunc placerat</h6>
-      <p>Purus quis sagittis nunc quisque vel malesuada purus nam ut</p>
-    </div>
-    <div class="group excerpt btmspace-80">
-      <article class="one_third first"><a class="imgover btmspace-30" href="#"><img src="images/demo/320x240.png" alt=""></a>
-        <ul class="nospace meta">
-          <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
-          <li><i class="fa fa-tag"></i> <a href="#">Tag Name</a></li>
-        </ul>
-        <h6 class="heading">Erat integer eleifend</h6>
-        <p>Ex eget rhoncus laoreet justo dui viverra justo eget ultricies justo mi ut dui phasellus ut leo volutpat massa lobortis&hellip;</p>
-        <footer><a href="#">Read More</a></footer>
-      </article>
-      <article class="one_third"><a class="imgover btmspace-30" href="#"><img src="images/demo/320x240.png" alt=""></a>
-        <ul class="nospace meta">
-          <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
-          <li><i class="fa fa-tag"></i> <a href="#">Tag Name</a></li>
-        </ul>
-        <h6 class="heading">Sodales etiam nec</h6>
-        <p>Dui consectetur pretium vel quis mauris quisque scelerisque dui justo ut volutpat eros vestibulum accumsan nulla viverra&hellip;</p>
-        <footer><a href="#">Read More</a></footer>
-      </article>
-      <article class="one_third"><a class="imgover btmspace-30" href="#"><img src="images/demo/320x240.png" alt=""></a>
-        <ul class="nospace meta">
-          <li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
-          <li><i class="fa fa-tag"></i> <a href="#">Tag Name</a></li>
-        </ul>
-        <h6 class="heading">Laoreet sollicitudin</h6>
-        <p>Dignissim maximus est vel egestas sed efficitur tortor ac eleifend semper leo nisl porttitor orci in malesuada nulla massa&hellip;</p>
-        <footer><a href="#">Read More</a></footer>
-      </article>
-    </div>
-    <footer class="center"><a class="btn" href="#">Convallis ultricies &raquo;</a></footer>
-    <!-- ################################################################################################ -->
-  </section>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row2 bgded overlay" style="background-image:url('images/demo/backgrounds/04.png');">
-  <section class="hoc cta clear"> 
-    <!-- ################################################################################################ -->
-    <div class="sectiontitle">
-      <h6 class="heading">Condimentum ullamcorper vehicula</h6>
-      <p>Velit vel pulvinar elit feugiat vel vivamus venenatis nunc ac</p>
-    </div>
-    <form method="post" action="#">
-      <fieldset>
-        <legend>Newsletter:</legend>
-        <input class="btmspace-15" type="text" value="" placeholder="Enter Your Email Here&hellip;">
-        <button type="submit" value="submit">Submit</button>
-      </fieldset>
-    </form>
-    <!-- ################################################################################################ -->
-  </section>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row4">
-  <footer id="footer" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <article class="one_quarter first">
-      <h6 class="heading">Sapien suscipit nec</h6>
-      <p>Ullamcorper quam eleifend donec vulputate ligula vel lacus vulputate ac efficitur odio malesuada curabitur nec nisl ac sapien dictum.</p>
-      <p>Scelerisque eget nec massa cras tristique sapien vel tortor varius a varius lacus&hellip;</p>
-      <p class="nospace"><a href="#">Read More</a></p>
-    </article>
-    <div class="one_quarter">
-      <h6 class="heading">Placerat phasellus</h6>
-      <ul class="nospace btmspace-30 linklist contact">
-        <li><i class="fa fa-map-marker"></i>
-          <address>
-          Street Name &amp; Number, Town, Postcode/Zip
-          </address>
-        </li>
-        <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
-      </ul>
-      <ul class="faico clear">
-        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-        <li><a class="faicon-dribble" href="#"><i class="fa fa-dribbble"></i></a></li>
-        <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Sapien suspendisse non</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Egestas cursus purus</a></li>
-        <li><a href="#">Quis rutrum est accumsan</a></li>
-        <li><a href="#">Sed nunc commodo massa</a></li>
-        <li><a href="#">Vel elit eleifend</a></li>
-        <li><a href="#">Sollicitudin morbi feugiat</a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Erat id sem fringilla</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Mollis placerat in at</a></li>
-        <li><a href="#">Ligula eget dui ultrices</a></li>
-        <li><a href="#">Porta maecenas eget</a></li>
-        <li><a href="#">Mi a velit tincidunt</a></li>
-        <li><a href="#">Aliquam vel sit amet</a></li>
-      </ul>
-    </div>
-    <!-- ################################################################################################ -->
-  </footer>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row5">
-  <div id="copyright" class="hoc clear"> 
-    <!-- ################################################################################################ -->
-    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-    <!-- ################################################################################################ -->
-  </div>
-</div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
-<!-- JAVASCRIPTS -->
-<script src="layout/scripts/jquery.min.js"></script>
-<script src="layout/scripts/jquery.backtotop.js"></script>
-<script src="layout/scripts/jquery.mobilemenu.js"></script>
+            <div class="d-flex">
+                <a href="/login" class="link-light">Login/Registration</a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+        </div>
+        </nav>
+    <!--End Nav Bar -->
+
+<!-- Contents -->
+        <div class="container bg-img ">
+            
+        </div>
+        
+        <div class="container m-4">
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 cat">
+                <c:forEach items="${categories}" var="category">
+                    <div class="col">
+                        <div class="card">
+                          <img src="..." class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title"><a class="dropdown-item" href="${category.id}">${category.name}</a></h5>
+                            <p>Add a category description</p>
+                          </div>
+                        </div>
+                      </div>
+                </c:forEach>
+              </div>
+            
+        </div>
+<!-- End Contents -->
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-1">
+        <!-- Section: Social media -->
+            <section class="mb-1">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-facebook-f"></i
+                ></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-twitter"></i
+                ></a>
+        
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-google"></i
+                ></a>
+        
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-instagram"></i
+                ></a>
+        
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-linkedin-in"></i
+                ></a>
+        
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-github"></i
+                ></a>
+            </section>
+        <!-- Section: Social media -->
+    
+        </div>
+        <!-- Grid container -->
+    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 </body>
 </html>

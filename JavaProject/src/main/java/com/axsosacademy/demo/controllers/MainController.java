@@ -1,6 +1,7 @@
 package com.axsosacademy.demo.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.axsosacademy.demo.models.Category;
 import com.axsosacademy.demo.models.User;
+import com.axsosacademy.demo.services.CategoryService;
 import com.axsosacademy.demo.services.UserService;
 import com.axsosacademy.demo.validetors.UserValidator;
 
@@ -23,13 +26,24 @@ public class MainController {
 	
     private final UserService userService;
     private final UserValidator userValidator;
+    private final CategoryService categoryService;
     
 
     
-    public MainController(UserService userService, UserValidator userValidator) {
+
+    
+    public MainController(UserService userService, UserValidator userValidator, CategoryService categoryService) {
 		this.userService = userService;
 		this.userValidator = userValidator;
+		this.categoryService = categoryService;
 	}
+
+	@RequestMapping("/")
+    public String viewPage(Model model) {
+    	List <Category> categories = categoryService.getAllCategories();
+		model.addAttribute("categories" , categories);
+        return "homePage.jsp";
+    }  
 
 //	@RequestMapping("/registration")
 //    public String registerForm(@Valid @ModelAttribute("user") User user) {
@@ -77,6 +91,13 @@ public class MainController {
     public String admin() {    
             
         return "adminPage.jsp";    
-    }  
+    }
+    
+    @RequestMapping(value="/categories", method=RequestMethod.GET)    
+    public String cagtegories() {    
+            
+        return "category_information.jsp";    
+    }
+    
 
 }

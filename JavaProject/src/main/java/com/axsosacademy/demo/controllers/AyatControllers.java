@@ -27,10 +27,6 @@ public class AyatControllers {
 		this.userValidator = userValidator;
 	}
 
-    @RequestMapping("/")
-    public String viewPage() {
-        return "test.jsp";
-    }  
 
 	@RequestMapping(value={"/login","/register"}) // , method=RequestMethod.POST
 	public String login(Model model,@RequestParam(value="error",required=false) String error,@RequestParam(value="logout",required=false) String logout){
