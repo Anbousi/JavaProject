@@ -19,12 +19,16 @@ public class AyatControllers {
 	
     private UserService userService;
     private UserValidator userValidator;
+	private final CategoryService categoryService;
+	private final PaintingService paintingService;
     
 
     
-    public AyatControllers(UserService userService, UserValidator userValidator) {
+    public AyatControllers(UserService userService, UserValidator userValidator , CategoryService categoryService, PaintingService paintingService) {
 		this.userService = userService;
 		this.userValidator = userValidator;
+		this.categoryService = categoryService;
+		this.paintingService = paintingService;
 	}
 
 
@@ -57,7 +61,33 @@ public class AyatControllers {
 	// 	session.invalidate();
 	// 	return "redirect:/";
 	// }
+//category 
+@RequestMapping("/category")
+public String Category(@ModelAttribute("category") Category category) {
+	return "showCategory.jsp";
+}
+@RequestMapping("categories/{id}")
+public String showCategory(@PathVariable("id") Long id, 
+		@ModelAttribute("category") Category category,
+		Model model) {
+	Category myCategory = categoryService.getCategory(id);
+	model.addAttribute("category", myCategory);
+	model.addAttribute("products", paintingService.getAllExceptId(id));
+	return "showCategory.jsp";
+}
+//painting
 
+@RequestMapping("/painting")
+public String painting(@ModelAttribute("painting") Painting painting) {
+	return "painting.jsp";
+}
+@RequestMapping("/painting/{id}")
+public String showProduct(@PathVariable("id") Long id, @ModelAttribute("painting") Painting painting, Model model) {
+	Painting myPainting = paintingService.getPainting(id);
+	model.addAttribute("painting", myPainting);
+	model.addAttribute("categories", categoryService.getAllExceptId(id));
+	return "showPainting.jsp";
+}
 
 }
 

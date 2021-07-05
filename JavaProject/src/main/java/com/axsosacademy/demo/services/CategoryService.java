@@ -41,5 +41,32 @@ public class CategoryService {
 	public void deleteCategory(long id) {
 		categoryRepository.deleteById(id);
 	}
+	//ayat
+	public List<Category> getAll() {
+		return (List<Category>) categoryRepository.findAll();
+	}
+
+	public Category getCategory(Long id) {
+		Optional<Category> myCategory = categoryRepository.findById(id);
+		if (myCategory.isPresent()) {
+			return myCategory.get();
+		} else {
+			return null;
+		}
+	}
+
+	public List<Category> getAllExceptId(Long id) {
+		List<Category> myCategories = this.getAll();
+		Optional<Painting> x = paintingRepository.findById(id);
+		if (x.isPresent()) {
+			Category myPaintingCategory = x.get().getCategory();
+			myCategories.remove(myPaintingCategory); //List<Category> myPaintingCategory = x.get().getCategory();
+													   //myCategories.removeAll(myPaintingCategory);
+			return myCategories;
+		} else {
+			return null;
+		}
+
+	}
 
 }
