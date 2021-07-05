@@ -6,6 +6,7 @@ import com.axsosacademy.demo.models.Category;
 
 import org.springframework.stereotype.Service;
 
+import com.axsosacademy.demo.models.Category;
 import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.repositories.CategoryRepository;
 import com.axsosacademy.demo.repositories.PaintingRepository;
@@ -16,13 +17,22 @@ public class PaintingService {
 	private final CategoryRepository categoryRepository;
 
 	private final PaintingRepository paintingRepository;
+	private final CategoryRepository categoryRepository;
 
 	
+<<<<<<< HEAD
 public PaintingService(CategoryRepository categoryRepository , PaintingRepository paintingRepository) {
 	this.categoryRepository = categoryRepository;
 	this.paintingRepository = paintingRepository;
-	}
+=======
 
+
+
+	public PaintingService(PaintingRepository paintingRepository, CategoryRepository categoryRepository) {
+		this.paintingRepository = paintingRepository;
+		this.categoryRepository = categoryRepository;
+>>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
+	}
 
 	//	Add a New Painting
 	public Painting addPainting(Painting painting) {
@@ -45,8 +55,9 @@ public Painting findPaintingById(Long id) {
     if(optionalPainting.isPresent()) {
         return optionalPainting.get();
     } else {
-        return null;
+       return null;
     }
+<<<<<<< HEAD
     }
 	//ayat
 	public Painting getPainting(Long id) {
@@ -58,10 +69,15 @@ public Painting findPaintingById(Long id) {
 			return null;
 		}
 	}
+=======
+}
+    
+>>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
 	
 	public List<Painting> getAll(){
 		return (List<Painting>) paintingRepository.findAll();
 	}
+	
 	public List<Painting> getAllExceptId(Long id){
 		List<Painting> myPaintings = this.getAll();
 		Optional<Category> x = categoryRepository.findById(id);

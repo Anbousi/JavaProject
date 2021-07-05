@@ -177,7 +177,7 @@
                                         <form:select path="category">
                                             <option value="" hidden></option>
                                             <c:forEach var="cat" items="${categories}">
-                                                <option value="cat">${cat.name}</option>
+                                                <option value="${cat.id}">${cat.name}</option>
                                             </c:forEach>
                                         </form:select>
                                         <form:errors path="category"/>
