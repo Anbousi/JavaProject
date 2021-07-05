@@ -172,15 +172,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><form:label path="categoryname">category</form:label></td>
+                                    <td><form:label path="category">category</form:label></td>
                                     <td>
-                                        <form:select path="categoryname">
+                                        <form:select path="category">
                                             <option value="" hidden></option>
-                                            <c:forEach var="category" items="${categories}">
-                                                <option value="category.id">${category.name}</option>
+                                            <c:forEach var="cat" items="${categories}">
+                                                <option value="cat">${cat.name}</option>
                                             </c:forEach>
                                         </form:select>
-                                        <form:errors path="categoryname"/>
+                                        <form:errors path="category"/>
                                     </td>
                                 </tr>
                             </table>

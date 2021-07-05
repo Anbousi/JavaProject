@@ -42,4 +42,10 @@ public class CategoryService {
 		categoryRepository.deleteById(id);
 	}
 
+
+
+	public Category findCategoryById(Long id) {
+		return categoryRepository.findById(id).orElse(null);
+	}
+
 }
