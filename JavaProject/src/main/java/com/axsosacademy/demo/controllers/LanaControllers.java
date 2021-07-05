@@ -21,12 +21,6 @@ public class LanaControllers {
     private final CategoryService cateServ;
     private final PaintingService paintServ;
     
-	
-    
-
-
-
-
 	public LanaControllers(UserService userService, UserValidator userValidator, CategoryService cateServ,
 			PaintingService paintServ) {
 		
@@ -37,11 +31,6 @@ public class LanaControllers {
 	}
 
 
-
-
-
-
-
 	@RequestMapping("/category/{id}")
 	public String showCategory(@PathVariable("id") Long id, Model model) {
 		Category cat = cateServ.findCategoryById(id);
@@ -49,6 +38,8 @@ public class LanaControllers {
 		List<Painting> paintings = cat.getPaintings();
 		model.addAttribute("paintings", paintings);
 		System.out.println(paintings);
+		List <Category> categories = cateServ.getAllCategories();
+		model.addAttribute("categories" , categories);
 		return"categoryShow.jsp";
 	}
     

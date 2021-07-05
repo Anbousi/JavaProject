@@ -1,6 +1,7 @@
 package com.axsosacademy.demo.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 
 import com.axsosacademy.demo.models.Category;
+import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.repositories.CategoryRepository;
+import com.axsosacademy.demo.repositories.PaintingRepository;
 
 
 
@@ -17,11 +20,12 @@ import com.axsosacademy.demo.repositories.CategoryRepository;
 public class CategoryService {
 	
 	private final CategoryRepository categoryRepository;
-	
-	
+	private final PaintingRepository paintingRepository;
 
-	public CategoryService(CategoryRepository categoryRepository) {
+
+	public CategoryService(CategoryRepository categoryRepository, PaintingRepository paintingRepository) {
 		this.categoryRepository = categoryRepository;
+		this.paintingRepository = paintingRepository;
 	}
 
 

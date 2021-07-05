@@ -68,7 +68,7 @@
                         <form method="POST" action="/login">
                             <p>
                                 
-                                <input type="text" id="username" name="username" placeholder="Email" />
+                                <input type="email" id="username" name="username" placeholder="Email" />
                             </p>
                             
                             <p>

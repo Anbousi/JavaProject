@@ -71,6 +71,7 @@ public class Painting {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id")
 	private Order order;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categories_id")
 	private Category category;

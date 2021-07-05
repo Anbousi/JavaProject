@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.axsosacademy.demo.models.Order;
 import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.models.Role;
 import com.axsosacademy.demo.models.User;
@@ -31,6 +32,15 @@ public class UserService {
 		Optional<Role> optionalRole = roleRepository.findById(id);
 	    if(optionalRole.isPresent()) {
 	        return optionalRole.get();
+	    } else {
+	        return null;
+	    }
+	}
+	
+	public User findUserById(Long id) {
+		Optional<User> optionalUser = userRepository.findById(id);
+	    if(optionalUser.isPresent()) {
+	        return optionalUser.get();
 	    } else {
 	        return null;
 	    }
@@ -76,6 +86,15 @@ public class UserService {
 	public List<User> getNonAdmin() {
 		List<User> nonAdmin = userRepository.findNonAdmin();
 		return nonAdmin;
+	}
+
+	public void addToCart(long cid, long pid , long uid) {
+		User user = findUserById(uid);
+		if(user.getOrders() == null) {
+			List<Order> order = user.getOrders();
+			order.add(null);
+		}
+		
 	}
 
 

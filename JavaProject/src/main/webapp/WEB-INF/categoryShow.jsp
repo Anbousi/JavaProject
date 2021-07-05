@@ -52,7 +52,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <c:forEach items="${categories}" var="category">
-                        <li><a class="dropdown-item" href="category/${category.id}">${category.name}</a></li>
+                        <li><a class="dropdown-item" href="/category/${category.id}">${category.name}</a></li>
                     </c:forEach>
                 </ul>
                 </li>
@@ -69,32 +69,32 @@
     <!--End Nav Bar -->
 
 <!-- Contents -->
-        <div class="container ">
+        <div class="container m-4">
             
         </div>
-        
-        <div class="container m-4">
 
-            <div class="row row-cols-1 row-cols-md-3 g-4 cat">
-                <c:forEach items="${paintings}" var="painting">
-                    <div class="col">
-                        <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${painting.pic} ${painting.title}</a></h5>
-                            <p>Add a category description</p>
-                          </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 container">
+            <c:forEach items="${paintings}" var="painting">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${painting.title}</h5>
+                        <p class="card-text">${painting.descreption}</p>
                         </div>
-                      </div>
-                </c:forEach>
-              </div>
-            
+                        <div class="card-footer">
+                        <small class="text-muted"><a class="dropdown-item" href="/category/${painting.getCategory().getId()}/painting/${painting.id}">More Details...</a></small>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
 <!-- End Contents -->
 
 
     <!-- Footer -->
-    <footer class="bg-dark text-center text-white">
+    <footer class="bg-dark text-center text-white fixed-bottom">
         <!-- Grid container -->
         <div class="container p-1">
         <!-- Section: Social media -->

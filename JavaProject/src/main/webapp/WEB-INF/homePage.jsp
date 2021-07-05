@@ -58,7 +58,20 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <a href="/login" class="link-light">Login/Registration</a>
+
+                <c:choose>
+                    <c:when test = "${principal == null}">
+                        <a href="/login" class="link-light">Login/Registration</a>
+                    </c:when>
+                                       
+                    <c:otherwise>
+                        <form id="logoutForm" method="POST" action="/logout">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <input type="submit"class="btn btn-dark" value="Logout!" />
+                        </form>
+                    </c:otherwise>
+                </c:choose>
+               
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -72,7 +85,7 @@
         <div class="container bg-img ">
             
         </div>
-        
+
         <div class="container m-4">
 
             <div class="row row-cols-1 row-cols-md-3 g-4 cat">
@@ -81,7 +94,7 @@
                         <div class="card">
                           <img src="..." class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
+                            <h5 class="card-title"><a class="dropdown-item" href="/category/${category.id}">${category.name}</a></h5>
                             <p>Add a category description</p>
                           </div>
                         </div>

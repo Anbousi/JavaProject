@@ -39,9 +39,10 @@ public class MainController {
 	}
 
 	@RequestMapping("/")
-    public String viewPage(Model model) {
+    public String viewPage(Model model, Principal principal) {
     	List <Category> categories = categoryService.getAllCategories();
 		model.addAttribute("categories" , categories);
+		model.addAttribute("principal",principal);
         return "homePage.jsp";
     }  
 

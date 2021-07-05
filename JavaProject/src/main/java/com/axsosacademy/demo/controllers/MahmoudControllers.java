@@ -62,6 +62,7 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
             return "addPainting.jsp";
         } 
         try {
+        System.out.println(painting.getId());
         paintingService.addPainting(painting);
         System.out.println("created");
         

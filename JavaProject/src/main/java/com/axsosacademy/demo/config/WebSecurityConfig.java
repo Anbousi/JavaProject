@@ -33,12 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        http.
 	            authorizeRequests()
 
-	                .antMatchers("/css/**", "/js/**", "/registration","/category*/painting*","/","/images/**").permitAll()
-
-
-	                .antMatchers("/css/**", "/js/**","/static/**", "/registration","/category*" ,"/category*/painting*","/").permitAll()
-
-	                .antMatchers("/admin/**").hasRole("ADMIN")
+	                .antMatchers("/css/**", "/js/**", "/registration","/category" ,"/category/painting/*","/category/**","/","/images/**").permitAll()
+	                .antMatchers("/admin/**","/cart/**").hasRole("ADMIN")
 	                .antMatchers("/cart/**").hasRole("USER")
 
 	                .anyRequest().authenticated()
@@ -46,10 +42,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	            .formLogin()
 	                .loginPage("/login")
 	                .permitAll()
-//                .defaultSuccessUrl("/home", true)
+                .defaultSuccessUrl("/", true)
 	                .and()
 	            .logout()
 	                .permitAll();
+	        
 	        
 	    }
 	 

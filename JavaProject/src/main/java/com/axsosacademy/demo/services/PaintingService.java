@@ -7,7 +7,9 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import com.axsosacademy.demo.models.Category;
 import com.axsosacademy.demo.models.Painting;
+import com.axsosacademy.demo.repositories.CategoryRepository;
 import com.axsosacademy.demo.repositories.PaintingRepository;
 
 
@@ -15,12 +17,16 @@ import com.axsosacademy.demo.repositories.PaintingRepository;
 public class PaintingService {
 	
 	private final PaintingRepository paintingRepository;
+	private final CategoryRepository categoryRepository;
 
 	
-public PaintingService(PaintingRepository paintingRepository) {
-		this.paintingRepository = paintingRepository;
-	}
 
+
+
+	public PaintingService(PaintingRepository paintingRepository, CategoryRepository categoryRepository) {
+		this.paintingRepository = paintingRepository;
+		this.categoryRepository = categoryRepository;
+	}
 
 	//	Add a New Painting
 	public Painting addPainting(Painting painting) {
@@ -43,22 +49,15 @@ public Painting findPaintingById(Long id) {
     if(optionalPainting.isPresent()) {
         return optionalPainting.get();
     } else {
-        return null;
+       return null;
     }
-	//ayat
-	public Painting getPainting(Long id) {
-		Optional<Painting> myPainting = paintingRepository.findById(id);
-		
-		if(myPainting.isPresent()) {
-			return myPainting.get();
-		}else {
-			return null;
-		}
-	}
+}
+    
 	
 	public List<Painting> getAll(){
 		return (List<Painting>) paintingRepository.findAll();
 	}
+	
 	public List<Painting> getAllExceptId(Long id){
 		List<Painting> myPaintings = this.getAll();
 		Optional<Category> x = categoryRepository.findById(id);
