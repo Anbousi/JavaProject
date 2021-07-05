@@ -45,6 +45,30 @@ public Painting findPaintingById(Long id) {
     } else {
         return null;
     }
+	//ayat
+	public Painting getPainting(Long id) {
+		Optional<Painting> myPainting = paintingRepository.findById(id);
+		
+		if(myPainting.isPresent()) {
+			return myPainting.get();
+		}else {
+			return null;
+		}
+	}
+	
+	public List<Painting> getAll(){
+		return (List<Painting>) paintingRepository.findAll();
+	}
+	public List<Painting> getAllExceptId(Long id){
+		List<Painting> myPaintings = this.getAll();
+		Optional<Category> x = categoryRepository.findById(id);
+		if(x.isPresent()) {
+			List<Painting> myCategoryPainting = x.get().getPaintings();
+			myPaintings.removeAll(myCategoryPainting);
+			return myPaintings;
+		}else {
+			return null;
+		}
 }
 
 
