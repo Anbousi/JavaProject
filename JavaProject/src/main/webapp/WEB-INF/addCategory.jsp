@@ -134,7 +134,7 @@
                         <!-- Page Heading -->
                         <h1 class="h3 mb-4 text-gray-800">Add a New Category</h1>
                         
-                        <form:form action="/admin/add_category" method="post" modelAttribute="category">
+                        <form:form action="/admin/add_category" method="post" modelAttribute="category" enctype="multipart/form-data">
                             <table class="table table-striped">
                                 <tr>
                                     <td><form:label path="name">Category Name</form:label></td>
@@ -142,10 +142,26 @@
                                         <form:input path="name"/>
                                         <form:errors path="name"/>
                                         <c:out value="${er}"/>
+                                    </td> 
+                                </tr>
+                                <tr>
+                                    <td><form:label path="pic"> Upload Picture</form:label></td>
+
+                                    <td> 
+                                        <form:input type="file" path="pic" name="pic" accept="image/png, image/jpeg, image/jpg" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="descreption"> Add a Descreption</form:label></td>
+
+                                    <td> 
+                                        <form:input path="descreption"/>
+                                        <form:errors path="descreption"/>
+                                        <c:out value="${er}"/>
                                     </td>
                                 </tr>
                             </table>
-                        
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <button type="submit" class="btn btn-primary">Add Category</button>
                         </form:form>
                         

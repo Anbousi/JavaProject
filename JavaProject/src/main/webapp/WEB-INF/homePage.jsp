@@ -79,10 +79,11 @@
                 <c:forEach items="${categories}" var="category">
                     <div class="col">
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                            <img src="category-photos/${category.id}/${category.pic}">
+
                           <div class="card-body">
                             <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
-                            <p>Add a category description</p>
+                            <p>${category.descreption}</p>
                           </div>
                         </div>
                       </div>

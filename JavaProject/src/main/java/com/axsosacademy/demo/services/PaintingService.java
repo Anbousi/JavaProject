@@ -1,24 +1,26 @@
 package com.axsosacademy.demo.services;
 
-import java.util.Optional;
 import java.util.List;
-
-import javax.validation.Valid;
+import java.util.Optional;
+import com.axsosacademy.demo.models.Category;
 
 import org.springframework.stereotype.Service;
 
 import com.axsosacademy.demo.models.Painting;
+import com.axsosacademy.demo.repositories.CategoryRepository;
 import com.axsosacademy.demo.repositories.PaintingRepository;
 
 
 @Service
 public class PaintingService {
-	
+	private final CategoryRepository categoryRepository;
+
 	private final PaintingRepository paintingRepository;
 
 	
-public PaintingService(PaintingRepository paintingRepository) {
-		this.paintingRepository = paintingRepository;
+public PaintingService(CategoryRepository categoryRepository , PaintingRepository paintingRepository) {
+	this.categoryRepository = categoryRepository;
+	this.paintingRepository = paintingRepository;
 	}
 
 
@@ -44,6 +46,7 @@ public Painting findPaintingById(Long id) {
         return optionalPainting.get();
     } else {
         return null;
+    }
     }
 	//ayat
 	public Painting getPainting(Long id) {

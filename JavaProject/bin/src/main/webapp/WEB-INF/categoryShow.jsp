@@ -69,19 +69,19 @@
     <!--End Nav Bar -->
 
 <!-- Contents -->
-        <div class="container bg-img ">
+        <div class="container ">
             
         </div>
         
         <div class="container m-4">
 
             <div class="row row-cols-1 row-cols-md-3 g-4 cat">
-                <c:forEach items="${categories}" var="category">
+                <c:forEach items="${paintings}" var="painting">
                     <div class="col">
                         <div class="card">
                           <img src="..." class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
+                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${painting.pic} ${painting.title}</a></h5>
                             <p>Add a category description</p>
                           </div>
                         </div>
