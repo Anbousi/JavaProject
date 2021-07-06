@@ -99,6 +99,10 @@ public String showProduct(@PathVariable("id") Long id, @ModelAttribute("painting
 	model.addAttribute("categories", categoryService.getAllExceptId(id));
 	return "showPainting.jsp";
 }
-
+@RequestMapping("/about")
+public String about() {
+	
+	return "AboutUs.jsp";
+}
 }
 
