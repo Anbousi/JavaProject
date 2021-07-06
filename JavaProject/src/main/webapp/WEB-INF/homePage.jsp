@@ -12,6 +12,7 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
   rel="stylesheet"
 />
+
 <link
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
   rel="stylesheet"
@@ -72,7 +73,9 @@
                     </c:when>
                                        
                     <c:otherwise>
+                        
                         <form id="logoutForm" method="POST" action="/logout">
+                            <img src="/images/cart.png" alt="cart image">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <input type="submit"class="btn btn-dark" value="Logout!" />
                         </form>

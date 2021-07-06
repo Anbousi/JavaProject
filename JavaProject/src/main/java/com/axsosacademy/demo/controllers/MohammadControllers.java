@@ -111,7 +111,7 @@ public class MohammadControllers {
 	 public String checkout(Principal principal) {
 		 User user = userService.findByUsername(principal.getName());
 		 orderServices.checkout(user.getId());
-		 return "redirect:/done";
+		 return "redirect:/cart/done";
 	 }
 	 
 	 @RequestMapping("/cart/done")
