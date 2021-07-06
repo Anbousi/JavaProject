@@ -98,13 +98,10 @@
                             <img src="category-photos/${category.id}/${category.pic}">
 
                           <div class="card-body">
-<<<<<<< HEAD
+
                             <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
                             <p>${category.descreption}</p>
-=======
-                            <h5 class="card-title"><a class="dropdown-item" href="/category/${category.id}">${category.name}</a></h5>
-                            <p>Add a category description</p>
->>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
+
                           </div>
                         </div>
                       </div>
