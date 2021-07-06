@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link
@@ -29,6 +30,20 @@
     margin-bottom: 30px;
 }
 </style>
+<script>  
+
+$('.element').each(function() {
+    $(this).mouseover(function() {
+        $(this).addClass('active');
+      $('.stage').children('.element').not('.active').addClass('inactive');
+    });
+    $(this).mouseleave(function() {
+        $(this).removeClass('active');
+        $('.stage').children('.element').not('.active').removeClass('inactive');
+    });
+});
+
+</script>
 <title>Welcome | Artisto</title>
 </head>
 <body>
@@ -85,9 +100,17 @@
     <!--End Nav Bar -->
 
 <!-- Contents -->
-        <div class="container bg-img ">
-            
-        </div>
+      <section class="pen">
+		<div class="stage">
+			<div class="element michael"></div>
+			<div class="element franklin"></div>
+			<div class="element trevor"></div>
+		</div>
+	</section>
+	<section class="credit">
+		<p>Code by <a href="https://twitter.com/vsxed" target="_blank" class="credit-link">Eduard Mayer</a>, <a href="http://www.rockstargames.com/V/" target="_blank" class="credit-link">Original</a></p>
+		<a href="https://github.com/vsxed/Responsive-GTA-V-Slider" target="_blank" class="credit-link button">Fork it on Github</a>
+	</section>
 
         <div class="container m-4">
 
@@ -162,4 +185,5 @@
     </footer>
     <!-- Footer -->
 </body>
+
 </html>
