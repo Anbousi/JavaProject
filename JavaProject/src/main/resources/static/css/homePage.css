@@ -110,15 +110,15 @@ body {
   opacity: 0.4;
 }
 .element.franklin {
-  background: url('http://www.eduardmayer.de/codepen-css-resources/images/gta/franklin.jpeg') 45% 0 no-repeat;
+  background: url('/images/demo/slide1.jpg') 45% 0 no-repeat;
   background-size: cover;
 }
 .element.michael {
-  background: url('http://www.eduardmayer.de/codepen-css-resources/images/gta/michael.jpeg') 45% 0 no-repeat;
+  background: url('/images/demo/slide2.jpg') 45% 0 no-repeat;
   background-size: cover;
 }
 .element.trevor {
-  background: url('http://www.eduardmayer.de/codepen-css-resources/images/gta/trevor.jpeg') 45% 0 no-repeat;
+  background: url('/images/demo/slide3.jpg') 45% 0 no-repeat;
   background-size: cover;
 }
 .element:last-of-type {

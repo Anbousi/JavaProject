@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -7,6 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="jquery-3.5.1.min.js"></script>
 
 <meta charset="ISO-8859-1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -31,27 +34,17 @@
     margin-bottom: 30px;
 }
 .category{
-    height: 200px;
+    height: 280px;
     width: auto;
 }
 .description{
     text-align: justify;
 }
+.container{
+	margin: 4%;
+}
 </style>
-<script>  
 
-$('.element').each(function() {
-    $(this).mouseover(function() {
-        $(this).addClass('active');
-      $('.stage').children('.element').not('.active').addClass('inactive');
-    });
-    $(this).mouseleave(function() {
-        $(this).removeClass('active');
-        $('.stage').children('.element').not('.active').removeClass('inactive');
-    });
-});
-
-</script>
 <title>Welcome | Artisto</title>
 </head>
 <body>
@@ -105,7 +98,7 @@ $('.element').each(function() {
         </div>
         </nav>
     <!--End Nav Bar -->
-
+<div>
 <!-- Contents -->
       <section class="pen">
 		<div class="stage">
@@ -114,14 +107,11 @@ $('.element').each(function() {
 			<div class="element trevor"></div>
 		</div>
 	</section>
-	<section class="credit">
-		<p>Code by <a href="https://twitter.com/vsxed" target="_blank" class="credit-link">Eduard Mayer</a>, <a href="http://www.rockstargames.com/V/" target="_blank" class="credit-link">Original</a></p>
-		<a href="https://github.com/vsxed/Responsive-GTA-V-Slider" target="_blank" class="credit-link button">Fork it on Github</a>
-	</section>
-
+	
+</div>
+<center>
     <main class="container">
-        <div class=" bg-img "> 
-        </div>
+       
         <div class="row row-cols-1 row-cols-md-3 g-4 cat">
             <c:forEach items="${categories}" var="category">
                 <div class="col">
@@ -137,6 +127,7 @@ $('.element').each(function() {
             </c:forEach>
         </div>   
     </main>
+    </center>
 <!-- End Contents -->
 
 
@@ -192,3 +183,17 @@ $('.element').each(function() {
 
 </html>
 
+<script>  
+
+$('.element').each(function() {
+    $(this).mouseover(function() {
+        $(this).addClass('active');
+      $('.stage').children('.element').not('.active').addClass('inactive');
+    });
+    $(this).mouseleave(function() {
+        $(this).removeClass('active');
+        $('.stage').children('.element').not('.active').removeClass('inactive');
+    });
+});
+
+</script>
