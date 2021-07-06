@@ -17,11 +17,8 @@
 
 <body>
     <form>
-       
-
         <div class="gcse-search">
         </div>
-
     </form>
 </body>
 
