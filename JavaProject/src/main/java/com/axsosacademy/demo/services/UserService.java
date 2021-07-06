@@ -88,15 +88,6 @@ public class UserService {
 		return nonAdmin;
 	}
 
-	public void addToCart(long cid, long pid , long uid) {
-		User user = findUserById(uid);
-		if(user.getOrders() == null) {
-			List<Order> order = user.getOrders();
-			order.add(null);
-		}
-		
-	}
-
 
     
 //    sddsdfgfdgdfdfdfd

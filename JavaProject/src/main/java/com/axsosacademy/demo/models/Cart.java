@@ -1,49 +1,57 @@
 package com.axsosacademy.demo.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.Entity ;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-@Entity
-@Table(name = "orders")
 
-public class Order {
+@Entity
+@Table(name = "carts")
+public class Cart {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
-
-	public Order() {
-		this.createdAt = new Date();
-		this.updatedAt = new Date();
+	
+//	relationship
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "order_id")
+	private Order order;
+	
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="product_id")
+    private Painting painting;
+		
+    
+	
+	
+	public Cart() {
+	}
+	
+	
+	public Cart(User user, Painting painting) {
+		this.user = user;
+		this.painting = painting;
 	}
 
-	// relationships
-	
-	@OneToMany(mappedBy="order", fetch = FetchType.LAZY)
-	private List<Cart> carts;
-	
-
-
-
-// Getters and Setters
-    
-	
-    
 
 	public Long getId() {
 		return id;
@@ -63,22 +71,37 @@ public class Order {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public List<Cart> getCarts() {
-		return carts;
+	public User getUser() {
+		return user;
 	}
-	public void setCarts(List<Cart> carts) {
-		this.carts = carts;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	
-	
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
+	public Order getOrder() {
+		return order;
 	}
-	
+	public void setOrder(Order i) {
+		this.order = i;
+	}
+
+	public Painting getPainting() {
+		return painting;
+	}
+	public void setPainting(Painting painting) {
+		this.painting = painting;
+	}
+	public Cart(User user, Order order) {
+		this.user = user;
+		this.order = order;
+	}
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
 
 }

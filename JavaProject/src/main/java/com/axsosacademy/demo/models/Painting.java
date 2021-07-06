@@ -3,6 +3,7 @@ package com.axsosacademy.demo.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity ;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -55,22 +57,30 @@ public class Painting {
 	}
 	
 	
-	// relationships
 
-	public Painting(String pic,String title, String descreption,
-			Double price,String artistname, Category category) {
+
+
+	public Painting(@NotBlank String pic, @Size(min = 1, message = "Title must  be present") String title,
+			@Size(min = 1, message = "Description must  be present") String descreption, @Min(1) Double price,
+			@Size(min = 1, message = "Artist name must  be present") String artistname, Cart cart, Category category) {
+
 		this.pic = pic;
 		this.title = title;
 		this.descreption = descreption;
 		this.price = price;
 		this.artistname = artistname;
+		this.cart = cart;
 		this.category = category;
 	}
 
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "order_id")
-	private Order order;
+
+
+
+	// relationships
+   
+	@OneToOne(mappedBy="painting", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private Cart cart;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categories_id")
@@ -81,25 +91,39 @@ public class Painting {
 
 
 
+
+
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+	
+
 	public Long getId() {
 		return id;
 	}
+
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+
+
 	public String getPic() {
 		return pic;
 	}
+
 
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
 
+
 	public String getTitle() {
 		return title;
 	}
+
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -109,9 +133,11 @@ public class Painting {
 		return descreption;
 	}
 
+
 	public void setDescreption(String descreption) {
 		this.descreption = descreption;
 	}
+
 
 	public Double getPrice() {
 		return price;
@@ -129,17 +155,21 @@ public class Painting {
 		this.artistname = artistname;
 	}
 
+
 	public String getCategoryname() {
 		return categoryname;
 	}
+
 
 	public void setCategoryname(String categoryname) {
 		this.categoryname = categoryname;
 	}
 
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
+
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
@@ -149,34 +179,36 @@ public class Painting {
 		return updatedAt;
 	}
 
+
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 
-	public Order getOrder() {
-		return order;
+	public Cart getCart() {
+		return cart;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
+
 
 	public Category getCategory() {
 		return category;
 	}
 
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
 
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
+
 
 }
 

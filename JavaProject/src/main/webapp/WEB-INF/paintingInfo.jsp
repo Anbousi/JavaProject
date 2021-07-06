@@ -35,7 +35,7 @@
                                 <li><a >Categories</a>
                                 <ul class="sub-menu">
                                     <c:forEach items="${categories}" var="category">
-                                        <li><a href="category/${category.id}">${category.name}</a></li>
+                                        <li><a href="/category/${category.id}">${category.name}</a></li>
                                     </c:forEach>
                                 </ul>
                                 </li>
@@ -130,7 +130,19 @@
                                                 </div>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="/cart/add_cart/${category.id}/${painting.id}"><button class="btn btn-primary">Add to cart</button></a>
+
+
+                                                    <c:choose>
+         
+                                                        <c:when test = "${painting.getCart() == null}">
+                                                            <a href="/cart/add_cart/${category.id}/${painting.id}"><button class="btn btn-primary">Add to cart</button></a>
+                                                        </c:when>
+                                                                                                             
+                                                        <c:otherwise>
+                                                            <button class="btn btn-primary" disabled>Sold out</button>
+                                                        </c:otherwise>
+                                                     </c:choose>
+
                                                     <br><br>
                                                     <a  href="/cart">View Chart </a>
                                                 </div>

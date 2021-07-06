@@ -1,5 +1,6 @@
 package com.axsosacademy.demo.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class LanaControllers {
 
 
 	@RequestMapping("/category/{id}")
-	public String showCategory(@PathVariable("id") Long id, Model model) {
+	public String showCategory(@PathVariable("id") Long id, Model model,Principal principal) {
 		Category cat = cateServ.findCategoryById(id);
 		model.addAttribute("category",cat);
 		List<Painting> paintings = cat.getPaintings();
@@ -40,6 +41,7 @@ public class LanaControllers {
 		System.out.println(paintings);
 		List <Category> categories = cateServ.getAllCategories();
 		model.addAttribute("categories" , categories);
+		model.addAttribute("principal",principal);
 		return"categoryShow.jsp";
 	}
     

@@ -27,9 +27,6 @@
     min-height: 650px;
     margin-bottom: 30px;
 }
-.minhight{
-    min-height: 300px;
-}
 </style>
 <title>Welcome | Artisto</title>
 </head>
@@ -55,12 +52,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <c:forEach items="${categories}" var="category">
-                        <li><a class="dropdown-item" href="/category/${category.id}">${category.name}</a></li>
+                        <li><a class="dropdown-item" href="category/${category.id}">${category.name}</a></li>
                     </c:forEach>
                 </ul>
                 </li>
             </ul>
             <div class="d-flex">
+
                 <c:choose>
                     <c:when test = "${principal == null}">
                         <a href="/login" class="link-light">Login/Registration</a>
@@ -73,6 +71,7 @@
                         </form>
                     </c:otherwise>
                 </c:choose>
+               
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -83,37 +82,20 @@
     <!--End Nav Bar -->
 
 <!-- Contents -->
-        <div class="container m-4">
-            
-        </div>
-
-
-        <div class="row row-cols-1 row-cols-md-3 g-4 container minhight">
-            <c:forEach items="${paintings}" var="painting">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">${painting.title}</h5>
-                        <p class="card-text">${painting.descreption}</p>
-                        </div>
-                        <div class="card-footer">
-                            <c:choose>
-         
-                                <c:when test = "${painting.getCart() == null}">
-                                    <small class="text-muted"><a class=" btn btn-primary btn-sm" href="/category/${painting.getCategory().getId()}/painting/${painting.id}">More Details...</a></small>
-                                </c:when>
-                                                                                     
-                                <c:otherwise>
-                                    <small class="text-muted"><a class=" btn btn-secondary btn-sm" href="/category/${painting.getCategory().getId()}/painting/${painting.id}">Sold Out!</a></small>
-                                </c:otherwise>
-                             </c:choose>
-
-                        
-                        </div>
-                    </div>
+        <div class="container cat">
+            <div class="card text-center ">
+                <div class="card-header">
+                  Purchase
                 </div>
-            </c:forEach>
+                <div class="card-body">
+                  <h5 class="card-title">Thank You..</h5>
+                  <p class="card-text">Hope you are happy with your purchase! Thank you for being a valued Artisto customer!</p>
+                  <a href="/" class="btn btn-primary">Continue Shopping</a>
+                </div>
+                <div class="card-footer text-muted">
+                  Items will be delevered as soon as possible.
+                </div>
+              </div>
         </div>
 <!-- End Contents -->
 
