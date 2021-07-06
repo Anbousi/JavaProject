@@ -75,6 +75,13 @@ public Painting findPaintingById(Long id) {
 		}
 }
 
+	public void updatePainting(Painting painting, Long id) {
+		Painting p = painting;
+		p.setId(id);
+		paintingRepository.save(p);
+		
+	}
+
 
 
 }

@@ -7,11 +7,6 @@
     <html lang="en">
     
     <head>
-        <style>
-            .pic{
-                width: 50px;
-            }
-        </style>
     
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,10 +59,10 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="/admin">Admin Page</a>
-                            <a class="collapse-item" href="/admin/add_painting">Add Painting</a>
+                            <a class="collapse-item active" href="/admin/add_painting">Add Painting</a>
                             <a class="collapse-item" href="/admin/add_category">Add Category</a>
                             <a class="collapse-item" href="/admin/users">Users</a>
-                            <a class="collapse-item active" href="/admin/show_paintings">Paintings</a>
+                            <a class="collapse-item" href="/admin/show_paintings">Paintings</a>
                             <a class="collapse-item" href="/admin/show_categories">Categories</a>
                             <div class="collapse-divider"></div>
                             <a class="collapse-item" href="/admin/add_admin">Add Admin</a>
@@ -137,31 +132,63 @@
                     <div class="container-fluid">
     
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-4 text-gray-800">All Paintings</h1>
+                        <h1 class="h3 mb-4 text-gray-800">Edit Painting</h1>
                         
-                        
+                        <form:form action="/admin/paintings/${painting.id}/edit" method="post" modelAttribute="painting" enctype="multipart/form-data">
                             <table class="table table-striped">
-                                <thead>
-                                    <th>Painting</th>
-                                    <th>Picture</th>
-                                    <th>Action</th>
-                                </thead>
-
-                                <tbody>
-
-                                    <c:forEach var="painting" items="${paintings}">
-                                        <tr>
-                                            <td><a href="/admin/paintings/${painting.id}">${painting.title}</a></td>
-                                            <td><img src="/painting-photos/${painting.id}/${painting.pic}" class="pic"></td>
-                                            <td>
-                                                <a href="/admin/paintings/${painting.id}/delete"><button class="btn btn-danger">Delete</button></a>
-                                                <!-- <a href="/admin/paintings/${painting.id}/edit"><button class="btn btn-primary">Edit</button></a>				 -->
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
+                                <tr>
+                                    <td><form:label path="pic">Add picture</form:label></td>
+                                    <td> 
+                                        <td> 
+                                            <form:input type="file" path="pic" name="pic" accept="image/png, image/jpeg, image/jpg" />
+                                        </td>
+                                        <form:errors path="pic"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="title">Title</form:label></td>
+                                    <td> 
+                                        <form:input path="title"/>
+                                        <form:errors path="title"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="descreption">Descreption</form:label></td>
+                                    <td> 
+                                        <form:textarea path="descreption"/>
+                                        <form:errors path="descreption"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="price">Price</form:label></td>
+                                    <td> 
+                                        <form:input type="number" path="price"/>
+                                        <form:errors path="price"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="artistname">Artist Name</form:label></td>
+                                    <td> 
+                                        <form:input path="artistname"/>
+                                        <form:errors path="artistname"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="category">category</form:label></td>
+                                    <td>
+                                        <form:select path="category">
+                                            <option value="" hidden></option>
+                                            <c:forEach var="cat" items="${categories}">
+                                                <option value="${cat.id}">${cat.name}</option>
+                                            </c:forEach>
+                                        </form:select>
+                                        <form:errors path="category"/>
+                                    </td>
+                                </tr>
                             </table>
                         
+                        <button type="submit" class="btn btn-primary">Add Painting</button>
+                        </form:form>
     
                     </div>
                     <!-- /.container-fluid -->
