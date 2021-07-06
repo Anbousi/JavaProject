@@ -29,6 +29,13 @@
     min-height: 650px;
     margin-bottom: 30px;
 }
+.category{
+    height: 200px;
+    width: auto;
+}
+.description{
+    text-align: justify;
+}
 </style>
 <script>  
 
@@ -83,7 +90,6 @@ $('.element').each(function() {
                     <c:otherwise>
                         
                         <form id="logoutForm" method="POST" action="/logout">
-                            <img src="/images/cart.png" alt="cart image">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             <input type="submit"class="btn btn-dark" value="Logout!" />
                         </form>
@@ -112,26 +118,24 @@ $('.element').each(function() {
 		<a href="https://github.com/vsxed/Responsive-GTA-V-Slider" target="_blank" class="credit-link button">Fork it on Github</a>
 	</section>
 
-        <div class="container m-4">
-
-            <div class="row row-cols-1 row-cols-md-3 g-4 cat">
-                <c:forEach items="${categories}" var="category">
-                    <div class="col">
-                        <div class="card">
-                            <img src="category-photos/${category.id}/${category.pic}">
-
-                          <div class="card-body">
-
-                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
-                            <p>${category.descreption}</p>
-
-                          </div>
-                        </div>
-                      </div>
-                </c:forEach>
-              </div>
-            
+    <main class="container">
+        <div class=" bg-img "> 
         </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4 cat">
+            <c:forEach items="${categories}" var="category">
+                <div class="col">
+                    <div class="card">
+                        <img src="category-photos/${category.id}/${category.pic}" class="category">
+
+                        <div class="card-body">
+                        <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
+                        <p class="description">${category.descreption}</p>
+                        </div>
+                    </div>
+                    </div>
+            </c:forEach>
+        </div>   
+    </main>
 <!-- End Contents -->
 
 
