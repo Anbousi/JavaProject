@@ -37,7 +37,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -147,7 +147,20 @@
                                     <c:forEach var="user" items="${users}">
                                         <tr>
                                             <td><a href="/admin/users/${user.id}">${user.firstname} ${user.lastname}</a></td>
-                                            <td><a href="/admin/users/${user.id}/delete"><button class="btn btn-danger">Delete</button></a></td>				
+
+                                            <c:choose>
+
+                                                <c:when test="${user.getRole().getId() == 1}">
+                                                    <td><a href="/admin/users/${user.id}/delete"><button class="btn btn-danger">Delete</button></a></td>
+                                                </c:when>
+    
+                                                <c:otherwise>
+                                                        <td><a href="/admin/users/${user.id}/delete"><button class="btn btn-danger">Admin!</button></a></td>
+                                                </c:otherwise>
+                                            </c:choose>
+
+
+                                            				
                                         </tr>
                                     </c:forEach>
                                 </tbody>

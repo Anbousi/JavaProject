@@ -36,8 +36,12 @@
                         }
 
                         .category {
-                            height: 280px;
+                            min-height: 280px;
                             width: auto;
+                        }
+
+                        .img{
+                            max-height: 300px;
                         }
 
                         .description {
@@ -133,8 +137,8 @@
                             <div class="row row-cols-1 row-cols-md-3 g-4 cat">
                                 <c:forEach items="${categories}" var="category">
                                     <div class="col">
-                                        <div class="card">
-                                            <img src="category-photos/${category.id}/${category.pic}" class="category">
+                                        <div class="card category">
+                                            <img src="category-photos/${category.id}/${category.pic}" class="img">
 
                                             <div class="card-body">
                                                 <h5 class="card-title"><a class="dropdown-item"

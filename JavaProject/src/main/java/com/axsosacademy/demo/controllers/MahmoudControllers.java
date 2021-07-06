@@ -228,6 +228,8 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
 		userService.addAdmin(id);
         return "redirect:/admin";
     }
+		
+	
 //    Send Email
 	@PostMapping("/send/email/{pid}/{cid}")
     public String sendEmail(@RequestParam("comment")String comment,@PathVariable("pid") long pid,@PathVariable("cid") long cid) {

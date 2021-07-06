@@ -6,6 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+		.img{
+			width: 60px;
+		}
+	</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel='stylesheet' href='/css/style3.css' type='text/css' media='all'/>
@@ -33,7 +38,7 @@
 							<tr>
 								<td data-th="Product">
 									<div class="row">
-										<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+										<div class="col-sm-2 hidden-xs"><img src="/painting-photos/${cart.getPainting().id}/${cart.getPainting().pic}" alt="pic" class="img"/></div>
 										<div class="col-sm-10">
 											<h4 class="nomargin">${cart.getPainting().getTitle()}</h4>
 											<p>${cart.getPainting().getDescreption()}</p>

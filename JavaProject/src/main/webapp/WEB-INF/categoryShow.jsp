@@ -30,7 +30,7 @@
                         }
 
                         .minhight {
-                            min-height: 300px;
+                            min-height: 350px;
                         }
 
                         .category {
@@ -138,7 +138,7 @@
 
 
                     <!-- Footer -->
-                    <footer class="bg-dark text-center text-white">
+                    <footer class="bg-dark text-center text-white fixed-bottom">
                         <!-- Grid container -->
                         <div class="container p-1">
                             <!-- Section: Social media -->
