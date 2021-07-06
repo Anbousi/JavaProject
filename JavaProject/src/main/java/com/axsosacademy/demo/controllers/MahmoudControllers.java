@@ -108,6 +108,31 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
 		paintingService.deletePaintning(id);
         return "redirect:/admin/show_paintings";
     }
+	
+	
+//	Edit a Painting ------------------------------------------------------------------------------------
+	@RequestMapping("/admin/paintings/{id}/edit")
+    public String editPaintingPage(@ModelAttribute("painting") Painting painting, Model model, Object List, @PathVariable("id") Long id) {
+		Painting p = paintingService.findPaintingById(id);
+		List <Category> categories = categoryService.getAllCategories();
+		model.addAttribute("categories" , categories);
+		model.addAttribute("painting" , p);
+        return "editPainting.jsp";
+    } 
+	
+	@PostMapping("/admin/paintings/{id}/edit")
+    public String editPainting(@Valid @ModelAttribute("painting") Painting painting, Model model, BindingResult result, @PathVariable("id") Long id) {
+      if (result.hasErrors()) {
+    	System.out.println("error");
+    	List <Category> categories = categoryService.getAllCategories();
+		model.addAttribute("categories" , categories);
+        return "addPainting.jsp";
+    } 
+		Painting p = paintingService.findPaintingById(id);
+		paintingService.updatePainting(painting , p.getId());
+		
+        return "editPainting.jsp";
+    } 
 //  --------------------------------------------------------------------------------------------------
     
 //	Add Category ------------------------------------------------------------------------------------
@@ -166,13 +191,8 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
     }
 
 
-    
-//	 @RequestMapping("/category/{id}/details")
-//	    public String index(Model model , Long id) {
-//	        List<Painting> panting =  paintingService.findPaintingById(id);
-//	        model.addAttribute("panting", panting);
-//	        return "/books/index.jsp";
-//	    }
+
+
 
 	 @RequestMapping("/category/details")
 	 public String showitemis() {

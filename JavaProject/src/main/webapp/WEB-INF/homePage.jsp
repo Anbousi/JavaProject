@@ -115,7 +115,7 @@
                         <div class="row row-cols-1 row-cols-md-3 g-4 cat">
                             <c:forEach items="${categories}" var="category">
                                 <div class="col">
-                                    <div class="card">
+                                    <div class="card h-100" style="max-width: 18rem;margin: 0 auto;">
                                         <img src="category-photos/${category.id}/${category.pic}" class="category">
 
                                         <div class="card-body">

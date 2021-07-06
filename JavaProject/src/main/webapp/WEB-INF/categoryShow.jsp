@@ -95,7 +95,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 container minhight">
             <c:forEach items="${paintings}" var="painting">
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100" style="max-width: 18rem; margin: 0 auto;">
                         <img src="/painting-photos/${painting.id}/${painting.pic}" class="category">
                         <div class="card-body">
                         <h5 class="card-title">${painting.title}</h5>
