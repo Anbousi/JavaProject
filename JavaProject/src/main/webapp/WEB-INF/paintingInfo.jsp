@@ -6,6 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .category{
+            height: 120px;
+        }
+
+    </style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel='stylesheet' href='/css/woocommerce-layout.css' type='text/css' media='all'/>
@@ -52,17 +58,13 @@
                             <article class="portfolio hentry">
                             <header class="entry-header">
                             <div class="entry-thumbnail">
-                                <img width="800" height="533" src="../img/wall.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/>
+                                <img src="/painting-photos/${painting.id}/${painting.pic}" class="category_top">
                             </div>
-                            <h1 class="entry-title">Painter</h1> 	
-                            <a class='portfoliotype' href='portfolio-category.html'>name : </a>
-                            <a class='portfoliotype' href='portfolio-category.html'>Type:</a>
+                            <h1 class="entry-title">Artist Name :<c:out value="${painting.artistname}"/></h1> 	
+                         
+
                             </header>
-                            <div class="entry-content ">
-                                <p>
-                                    <c:out value="${painting.descreption}"/>
-                                </p>
-                            </div>
+
                             </article> 
                             <div class="painting">
                                 <div class="container">
@@ -75,12 +77,12 @@
                                                 <div class="carousel-inner">
                                                     <div class="item active">
                                                         <c:forEach items="${paintings}" var="painting">
-                                                            <a href="/category/${painting.getCategory().getId()}/painting/${painting.id}"><div data-target="#carousel"  class="thumb"><img src="" alt="Image"></div></a>
+                                                            <a href="/category/${painting.getCategory().getId()}/painting/${painting.id}"><div data-target="#carousel"  class="thumb"><img src="/painting-photos/${painting.id}/${painting.pic}" class="category"></div></a>
                                                         </c:forEach>
                                                     </div><!-- /item -->
                                                     <div class="item">
                                                         <c:forEach items="${paintings}" var="painting">
-                                                            <a href="/category/${painting.getCategory().getId()}/painting/${painting.id}"><div data-target="#carousel"  class="thumb"><img src="" alt="Image"></div></a>
+                                                            <a href="/category/${painting.getCategory().getId()}/painting/${painting.id}"><div data-target="#carousel"  class="thumb"><img src="/painting-photos/${painting.id}/${painting.pic}" class="category"></div></a>
                                                         </c:forEach>
                                                     </div><!-- /item -->
                                                 </div><!-- /carousel-inner -->
@@ -119,7 +121,13 @@
                                 <div> <br> <br> <br>
                                         <h1>Price:  </h1>
                                         <p class="price"><c:out value="${painting.price}"/></p>
-                                        <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+                                        <hr>
+                                        <h3>Description</h3>
+                                            <div class="entry-content ">
+                                                <p>
+                                                    <c:out value="${painting.descreption}"/>
+                                                </p>
+                                            </div>
                                         <div class="container-fluid" style="padding-top: 15px;padding-bottom: 15px;">
                                             <div class="row">
                                                 <div class="col">

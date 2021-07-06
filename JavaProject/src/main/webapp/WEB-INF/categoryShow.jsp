@@ -30,6 +30,10 @@
 .minhight{
     min-height: 300px;
 }
+.category{
+    height: 200px;
+    width: auto;
+}
 </style>
 <title>Welcome | Artisto</title>
 </head>
@@ -92,7 +96,7 @@
             <c:forEach items="${paintings}" var="painting">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="/painting-photos/${painting.id}/${painting.pic}" class="category">
                         <div class="card-body">
                         <h5 class="card-title">${painting.title}</h5>
                         <p class="card-text">${painting.descreption}</p>

@@ -2,7 +2,6 @@ package com.axsosacademy.demo.services;
 
 import java.util.List;
 import java.util.Optional;
-import com.axsosacademy.demo.models.Category;
 
 import org.springframework.stereotype.Service;
 
@@ -15,23 +14,12 @@ import com.axsosacademy.demo.repositories.PaintingRepository;
 @Service
 public class PaintingService {
 	private final CategoryRepository categoryRepository;
-
 	private final PaintingRepository paintingRepository;
-	private final CategoryRepository categoryRepository;
-
-	
-<<<<<<< HEAD
-public PaintingService(CategoryRepository categoryRepository , PaintingRepository paintingRepository) {
-	this.categoryRepository = categoryRepository;
-	this.paintingRepository = paintingRepository;
-=======
 
 
-
-	public PaintingService(PaintingRepository paintingRepository, CategoryRepository categoryRepository) {
-		this.paintingRepository = paintingRepository;
+	public PaintingService(CategoryRepository categoryRepository, PaintingRepository paintingRepository) {
 		this.categoryRepository = categoryRepository;
->>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
+		this.paintingRepository = paintingRepository;
 	}
 
 	//	Add a New Painting
@@ -57,7 +45,7 @@ public Painting findPaintingById(Long id) {
     } else {
        return null;
     }
-<<<<<<< HEAD
+
     }
 	//ayat
 	public Painting getPainting(Long id) {
@@ -69,10 +57,7 @@ public Painting findPaintingById(Long id) {
 			return null;
 		}
 	}
-=======
-}
-    
->>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
+
 	
 	public List<Painting> getAll(){
 		return (List<Painting>) paintingRepository.findAll();

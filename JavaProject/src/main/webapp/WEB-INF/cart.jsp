@@ -61,11 +61,11 @@
 							<c:choose>
          
                                 <c:when test = "${carts.size() > 0}">
-                                    <td><a href="/cart/done" class="btn btn-success btn-block">Checkout<i class="fa fa-angle-right"></i></a></td>
+                                    <td><a href="/cart/checkout" class="btn btn-success btn-block">Checkout<i class="fa fa-angle-right"></i></a></td>
                                 </c:when>
                                                                                      
                                 <c:otherwise>
-									<td><button href="/cart/done" class="btn btn-success btn-block" disabled>Checkout<i class="fa fa-angle-right"></i></button></td>                                </c:otherwise>
+									<td><button href="/cart/checkout" class="btn btn-success btn-block" disabled>Checkout<i class="fa fa-angle-right"></i></button></td>                                </c:otherwise>
                              </c:choose>
 
 							

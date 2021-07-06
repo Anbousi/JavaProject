@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
 
-=======
->>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
 import com.axsosacademy.demo.models.Category;
 import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.models.User;

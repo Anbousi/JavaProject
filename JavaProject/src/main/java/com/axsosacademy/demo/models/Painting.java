@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -29,8 +30,14 @@ public class Painting {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@Column(nullable=true,length=64)
 	private String pic;
+	
+	@Transient
+	public String getPhotosImagePath() {
+		if(pic == null || id == null ) return null;
+		return"/painting-photos/" + id + "/" + pic;
+	}
 
 	@Size(min = 1, message = "Title must  be present")
 	private String title;
@@ -208,6 +215,8 @@ public class Painting {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	
+
 
 
 }

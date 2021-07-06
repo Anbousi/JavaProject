@@ -58,25 +58,36 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
 	
 
     @PostMapping("/admin/add_painting")
-    public String addPainting(@Valid @ModelAttribute("painting") Painting painting, BindingResult result, Model model, HttpSession session) {
+    public String addPainting(@Valid @ModelAttribute("painting") Painting painting, BindingResult result, Model model, HttpSession session, @RequestParam("pic") MultipartFile multipartFile)throws IOException {
         System.out.println("Create a painting");
         
-        if (result.hasErrors()) {
-        	System.out.println("error");
-        	List <Category> categories = categoryService.getAllCategories();
-    		model.addAttribute("categories" , categories);
-            return "addPainting.jsp";
-        } 
+//        if (result.hasErrors()) {
+//        	System.out.println("error");
+//        	List <Category> categories = categoryService.getAllCategories();
+//    		model.addAttribute("categories" , categories);
+//            return "addPainting.jsp";
+//        } 
         try {
-        System.out.println(painting.getId());
-        paintingService.addPainting(painting);
-        System.out.println("created");
+        	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+       	 	System.out.println(fileName);
+       	 	painting.setPic(fileName);
+   		 
+       	 	Painting savedPainting = paintingService.addPainting(painting);
+   	        System.out.println(savedPainting.toString());
+
+   	        String uploadDir = "painting-photos/" + savedPainting.getId();
+   		 
+   	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+   	        System.out.println("created");
+        	
+//        System.out.println(painting.getId());
+//        paintingService.addPainting(painting);
+//        System.out.println("created");
         
         }
         catch(Exception e) {
         	List <Category> categories = categoryService.getAllCategories();
     		model.addAttribute("categories" , categories);
-    		
             return "addPainting.jsp";
         }
         return "redirect:/admin/show_paintings";
@@ -111,11 +122,11 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
     		HttpSession session, @RequestParam("pic") MultipartFile multipartFile)throws IOException {
         System.out.println("Create a Category");
         //System.out.println( multipartFile instanceof MultipartFile);
-        if (result.hasErrors()) {
-        	System.out.println("errors: ");
-        	System.out.print(result.getAllErrors().toString());
-            //return "addCategory.jsp";
-        } 
+//        if (result.hasErrors()) {
+//        	System.out.println("errors: ");
+//        	System.out.print(result.getAllErrors().toString());
+//            //return "addCategory.jsp";
+//        } 
         try {
 //        		MultipartFile multipartFile = null;
         	 String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());

@@ -134,12 +134,14 @@
                         <!-- Page Heading -->
                         <h1 class="h3 mb-4 text-gray-800">Add a New Painting</h1>
                         
-                        <form:form action="/admin/add_painting" method="post" modelAttribute="painting">
+                        <form:form action="/admin/add_painting" method="post" modelAttribute="painting" enctype="multipart/form-data">
                             <table class="table table-striped">
                                 <tr>
-                                    <td><form:label path="pic">Picture URL</form:label></td>
+                                    <td><form:label path="pic">Add picture</form:label></td>
                                     <td> 
-                                        <form:input path="pic"/>
+                                        <td> 
+                                            <form:input type="file" path="pic" name="pic" accept="image/png, image/jpeg, image/jpg" />
+                                        </td>
                                         <form:errors path="pic"/>
                                     </td>
                                 </tr>
@@ -151,7 +153,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><form:label path="descreption">Rescreption</form:label></td>
+                                    <td><form:label path="descreption">Descreption</form:label></td>
                                     <td> 
                                         <form:textarea path="descreption"/>
                                         <form:errors path="descreption"/>

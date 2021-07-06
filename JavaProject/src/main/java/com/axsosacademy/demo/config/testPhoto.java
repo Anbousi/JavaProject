@@ -15,6 +15,7 @@ public class testPhoto implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         exposeDirectory("category-photos", registry);
+        exposeDirectory("painting-photos", registry);
     }
 
     private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {
