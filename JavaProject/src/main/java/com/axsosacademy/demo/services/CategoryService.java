@@ -2,11 +2,13 @@ package com.axsosacademy.demo.services;
 
 import java.util.List;
 import java.util.Optional;
+<<<<<<< HEAD
+=======
 
 import javax.validation.Valid;
+>>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
 
 import org.springframework.stereotype.Service;
-
 
 import com.axsosacademy.demo.models.Category;
 import com.axsosacademy.demo.models.Painting;
@@ -21,17 +23,24 @@ public class CategoryService {
 	
 	private final CategoryRepository categoryRepository;
 	private final PaintingRepository paintingRepository;
+<<<<<<< HEAD
+ 	
+	
+
+	public CategoryService(CategoryRepository categoryRepository , PaintingRepository paintingRepository) {
+=======
 
 
 	public CategoryService(CategoryRepository categoryRepository, PaintingRepository paintingRepository) {
+>>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
 		this.categoryRepository = categoryRepository;
 		this.paintingRepository = paintingRepository;
 	}
 
 
 
-	public void addCategory(Category category) {
-		categoryRepository.save(category);
+	public Category addCategory(Category category) {
+		return categoryRepository.save(category);
 	}
 
 
@@ -77,6 +86,12 @@ public class CategoryService {
 
 	public Category findCategoryById(Long id) {
 		return categoryRepository.findById(id).orElse(null);
+	}
+
+
+
+	public Category save(Category category) {
+		return categoryRepository.save(category);
 	}
 
 }

@@ -2,6 +2,7 @@ package com.axsosacademy.demo.controllers;
 
 
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,13 +10,18 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.axsosacademy.demo.models.Category;
+import com.axsosacademy.demo.models.FileUploadUtil;
 import com.axsosacademy.demo.models.Painting;
 import com.axsosacademy.demo.models.User;
 import com.axsosacademy.demo.services.CategoryService;
@@ -100,20 +106,33 @@ public MahmoudControllers(UserService userService, PaintingService paintingServi
     } 
 	
     @PostMapping("/admin/add_category")
-    public String addCategory(@Valid @ModelAttribute("category") Category category, BindingResult result, Model model, HttpSession session) {
+    public String addCategory(@Valid @ModelAttribute("category") Category category,
+    		BindingResult result, Model model,
+    		HttpSession session, @RequestParam("pic") MultipartFile multipartFile)throws IOException {
         System.out.println("Create a Category");
-        
+        //System.out.println( multipartFile instanceof MultipartFile);
         if (result.hasErrors()) {
-        	System.out.println("error");
-            return "addCategory.jsp";
+        	System.out.println("errors: ");
+        	System.out.print(result.getAllErrors().toString());
+            //return "addCategory.jsp";
         } 
         try {
-        	categoryService.addCategory(category);
+//        		MultipartFile multipartFile = null;
+        	 String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        	 System.out.println(fileName);
+    		 category.setPic(fileName);
+    		 
+    		 Category savedCategory = categoryService.addCategory(category);
+    	       System.out.println(savedCategory.toString());
+
+    		 String uploadDir = "category-photos/" + savedCategory.getId();
+    		 
+    		 FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
         System.out.println("created");
         return "redirect:/admin/show_categories";
         }
         catch(Exception e){
-        	model.addAttribute("er", "This Category is aleady added!");
+        	model.addAttribute("er", "There is a problem in adding the category!");
         	return "addCategory.jsp";
         }
         

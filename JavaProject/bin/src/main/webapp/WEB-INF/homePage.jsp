@@ -52,7 +52,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <c:forEach items="${categories}" var="category">
-                        <li><a class="dropdown-item" href="${category.id}">${category.name}</a></li>
+                        <li><a class="dropdown-item" href="category/${category.id}">${category.name}</a></li>
                     </c:forEach>
                 </ul>
                 </li>
@@ -81,7 +81,7 @@
                         <div class="card">
                           <img src="..." class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h5 class="card-title"><a class="dropdown-item" href="${category.id}">${category.name}</a></h5>
+                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
                             <p>Add a category description</p>
                           </div>
                         </div>

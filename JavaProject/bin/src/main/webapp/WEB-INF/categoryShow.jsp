@@ -58,20 +58,7 @@
                 </li>
             </ul>
             <div class="d-flex">
-
-                <c:choose>
-                    <c:when test = "${principal == null}">
-                        <a href="/login" class="link-light">Login/Registration</a>
-                    </c:when>
-                                       
-                    <c:otherwise>
-                        <form id="logoutForm" method="POST" action="/logout">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <input type="submit"class="btn btn-dark" value="Logout!" />
-                        </form>
-                    </c:otherwise>
-                </c:choose>
-               
+                <a href="/login" class="link-light">Login/Registration</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -82,26 +69,20 @@
     <!--End Nav Bar -->
 
 <!-- Contents -->
-        <div class="container bg-img ">
+        <div class="container ">
             
         </div>
-
+        
         <div class="container m-4">
 
             <div class="row row-cols-1 row-cols-md-3 g-4 cat">
-                <c:forEach items="${categories}" var="category">
+                <c:forEach items="${paintings}" var="painting">
                     <div class="col">
                         <div class="card">
-                            <img src="category-photos/${category.id}/${category.pic}">
-
+                          <img src="..." class="card-img-top" alt="...">
                           <div class="card-body">
-<<<<<<< HEAD
-                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${category.name}</a></h5>
-                            <p>${category.descreption}</p>
-=======
-                            <h5 class="card-title"><a class="dropdown-item" href="/category/${category.id}">${category.name}</a></h5>
+                            <h5 class="card-title"><a class="dropdown-item" href="category/${category.id}">${painting.pic} ${painting.title}</a></h5>
                             <p>Add a category description</p>
->>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
                           </div>
                         </div>
                       </div>

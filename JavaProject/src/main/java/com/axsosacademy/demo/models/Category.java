@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-//import javax.persistence.Transient;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 //import javax.validation.constraints.Pattern;
 //import javax.validation.constraints.Size;
@@ -37,6 +37,17 @@ public class Category {
 	@Size(min = 1, message = "Category must be present and more than 1 char")
 	@Column(unique = true)
 	private String name;
+	
+	@Column(nullable=true,length=64)
+	private String pic;
+	
+	@Transient
+	public String getPhotosImagePath() {
+		if(pic == null || id == null ) return null;
+		return"/category-photos/" + id + "/" + pic;
+	}
+	@Size(min = 1, message = "Description must  be present")
+	private String descreption;
 	
 	@Column(updatable = false)
 	private Date createdAt;
@@ -92,5 +103,24 @@ public class Category {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	public String getPic() {
+		return pic;
+	}
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+	public String getDescreption() {
+		return descreption;
+	}
+	public void setDescreption(String descreption) {
+		this.descreption = descreption;
+	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", pic=" + pic + ", descreption=" + descreption
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", Paintings=" + Paintings + "]";
+	}
+	
+	
 
 }

@@ -1,9 +1,8 @@
 package com.axsosacademy.demo.services;
 
-import java.util.Optional;
 import java.util.List;
-
-import javax.validation.Valid;
+import java.util.Optional;
+import com.axsosacademy.demo.models.Category;
 
 import org.springframework.stereotype.Service;
 
@@ -15,17 +14,24 @@ import com.axsosacademy.demo.repositories.PaintingRepository;
 
 @Service
 public class PaintingService {
-	
+	private final CategoryRepository categoryRepository;
+
 	private final PaintingRepository paintingRepository;
 	private final CategoryRepository categoryRepository;
 
 	
+<<<<<<< HEAD
+public PaintingService(CategoryRepository categoryRepository , PaintingRepository paintingRepository) {
+	this.categoryRepository = categoryRepository;
+	this.paintingRepository = paintingRepository;
+=======
 
 
 
 	public PaintingService(PaintingRepository paintingRepository, CategoryRepository categoryRepository) {
 		this.paintingRepository = paintingRepository;
 		this.categoryRepository = categoryRepository;
+>>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
 	}
 
 	//	Add a New Painting
@@ -51,8 +57,22 @@ public Painting findPaintingById(Long id) {
     } else {
        return null;
     }
+<<<<<<< HEAD
+    }
+	//ayat
+	public Painting getPainting(Long id) {
+		Optional<Painting> myPainting = paintingRepository.findById(id);
+		
+		if(myPainting.isPresent()) {
+			return myPainting.get();
+		}else {
+			return null;
+		}
+	}
+=======
 }
     
+>>>>>>> 7ee0acf35b6ab6ed19bd575a362b71e88b97700a
 	
 	public List<Painting> getAll(){
 		return (List<Painting>) paintingRepository.findAll();
